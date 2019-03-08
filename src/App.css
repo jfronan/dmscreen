@@ -1,33 +1,124 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.hidden {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  align-content: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button:active {
+  padding-top: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.images {
+  max-height: 75%;
+  max-width: 75%;
+}
+
+.roundImages {
+  max-height: 65%;
+  max-width: 65%;
+}
+
+.opcionesBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 10%;
+  width: 20%;
+  margin: 8px;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  z-index: 10;
+}
+
+.opcionesButton {
+  border-radius: 50%;
+  max-height: 9vh;
+  max-width: 9vh;
+  min-height: 9vh;
+  min-width: 9vh;
+}
+
+.windowBox {
+  background-image: url(./assets/backgrounds/paper.png);
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-blend-mode: overlay;
+  border: 4px solid;
+  border-radius: 8px;
+  border-image: url(./assets/borders/cloud.png) 100 round;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.boxTitle {
+  font-family: fantasy;
+  height: 16px;
+  width: 100%;
+  border: 0px solid;
+  border-image: url(./assets/borders/cloud.png) 50 round;
+  border-bottom-width: 2px;
+  border-color: rgb(221, 160, 221);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  margin-top: 0px
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.yellowish {
+  background-color: #e2e24d;
+}
+
+.greyish {
+  background-color: #bcbcbc;
+}
+
+.celestito {
+  background-color: #b5d1fd;
+}
+
+.sangron {
+  background-color: #7f2727;
+}
+
+.floatingBox {
+  border-radius: 5px;
+  margin: 8px;
+}
+
+.windowContainer {
+  position: absolute;
+  display: flex;
+  padding: 4px;
+}
+
+
+
+
+
+.test {
+  background-color: cyan;
+  width: 100%;
+  height: 100%;
 }

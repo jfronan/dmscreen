@@ -1,0 +1,27 @@
+.npcWindow {
+  top: 0;
+  left: 0;
+  height: 48%;
+  width: 20%;
+}
+
+.notasWindow {
+  top: 50%;
+  left: 0;
+  width: 20%;
+  height: 48%;
+}
+
+.notaAreaWindow {
+  top: 11%;
+  right: 0;
+  width: 20%;
+  height: 48%;
+}
+
+.loggerWindow {
+  top: 61%;
+  right: 0;
+  width: 20%;
+  height: 37%;
+}

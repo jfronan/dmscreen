@@ -1,0 +1,42 @@
+import React from 'react';
+import '../App.css';
+import mapPage from "../assets/mapPage.png";
+import combatPage from "../assets/combatPage.png";
+import settingsIcon from "../assets/settingsIcon.png";
+
+import MapScreen from "./map/MapScreenContainer";
+
+export default class MainScreen extends React.Component {
+
+  constructor(props) {
+    super();
+    this.onAlternarPress = this.onAlternarPress.bind(this);
+  }
+
+  onAlternarPress() {
+    this.props.alternarCombateMapa();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="opcionesBox">
+          <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton yellowish">
+            {this.props.modoCombate
+            ? <img src={mapPage} className="roundImages" alt="Go to Map"/>
+            : <img src={combatPage} className="roundImages" alt="Go to Combat"/>
+            }
+          </div>
+          <div id="opciones" className="button opcionesButton greyish">
+            <img src={settingsIcon} className="roundImages" alt="Opciones"/>
+          </div>
+        </div>
+
+        <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App celestito'}>
+          <MapScreen/>
+        </div>
+        <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>Combate (WIP)</div>
+      </div>
+    );
+  }
+}
