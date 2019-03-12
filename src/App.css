@@ -4,6 +4,11 @@
   background-color: transparent;
 }
 
+.fill {
+  height: 100%;
+  width: 100%;
+}
+
 .hidden {
   display: none;
 }
@@ -14,9 +19,8 @@
   align-content: center;
   justify-content: center;
 }
-
 .button:active {
-  padding-top: 1px;
+  margin-top: 1px;
 }
 
 .images {
@@ -29,9 +33,27 @@
   max-width: 65%;
 }
 
+.modalContainer {
+  position: absolute;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 2% 5% 5% 5%;
+  overflow: hidden;
+}
+
+.modalBox {
+  height: 90vh;
+  width: 90vw;
+  position: relative;
+}
+
 .opcionesBox {
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 0;
   height: 10%;
   width: 20%;
@@ -48,16 +70,25 @@
 
 .opcionesButton {
   border-radius: 50%;
+  border: 2px solid;
+  border-color: black;
   max-height: 9vh;
   max-width: 9vh;
   min-height: 9vh;
   min-width: 9vh;
 }
 
+.windowContainer {
+  position: absolute;
+  display: flex;
+  padding: 4px;
+}
+
 .windowBox {
+  position: relative;
   background-image: url(./assets/backgrounds/paper.png);
   background-position: center; 
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: auto;
   background-blend-mode: overlay;
   border: 4px solid;
@@ -79,7 +110,34 @@
   font-size: 12px;
   line-height: 16px;
   text-align: center;
-  margin-top: 0px
+  margin: 0px
+}
+
+.botonAmpliar {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.botonAmpliar:hover {
+  cursor: pointer;
+}
+.botonAmpliar:active {
+  margin-top: 1px;
+}
+
+.botonCerrar {
+  top: 3px;
 }
 
 .transparent {
@@ -90,11 +148,19 @@
   background-color: #e2e24d;
 }
 
+.greenish {
+  background-color: #90ee90;
+}
+
+.redish {
+  background-color: #dc143c;
+}
+
 .greyish {
   background-color: #bcbcbc;
 }
 
-.celestito {
+.colorMapa {
   background-color: #b5d1fd;
 }
 
@@ -107,18 +173,17 @@
   margin: 8px;
 }
 
-.windowContainer {
-  position: absolute;
+.flex {
   display: flex;
-  padding: 4px;
 }
 
+.hoverPoint:hover {
+  cursor: pointer;
+}
 
 
 
 
 .test {
   background-color: cyan;
-  width: 100%;
-  height: 100%;
 }

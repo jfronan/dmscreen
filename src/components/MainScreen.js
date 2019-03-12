@@ -5,6 +5,7 @@ import combatPage from "../assets/combatPage.png";
 import settingsIcon from "../assets/settingsIcon.png";
 
 import MapScreen from "./map/MapScreenContainer";
+import ModalZoom from "./ModalZoomContainer";
 
 export default class MainScreen extends React.Component {
 
@@ -20,6 +21,7 @@ export default class MainScreen extends React.Component {
   render() {
     return (
       <div className="App">
+        <ModalZoom/>
         <div className="opcionesBox">
           <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton yellowish">
             {this.props.modoCombate
@@ -32,7 +34,7 @@ export default class MainScreen extends React.Component {
           </div>
         </div>
 
-        <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App celestito'}>
+        <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App colorMapa'}>
           <MapScreen/>
         </div>
         <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>Combate (WIP)</div>
