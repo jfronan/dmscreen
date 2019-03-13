@@ -1,0 +1,58 @@
+.npcWindow {
+    top: 0;
+    left: 0;
+    height: 48%;
+    width: 20%;
+  }
+  
+  .notasWindow {
+    top: 50%;
+    left: 0;
+    width: 20%;
+    height: 48%;
+  }
+  
+  .notaAreaWindow {
+    top: 50%;
+    right: 0;
+    width: 20%;
+    height: 48%;
+  }
+  
+  .navigator {
+    top: 11%;
+    right: 0;
+    width: 20%;
+    height: 37%;
+  }
+  
+  .loggerWindow {
+    bottom: 1%;
+    left: 21%;
+    width: 57%;
+    height: 18%;
+  }
+  
+  .cartografoBox {
+    top: 0;
+    bottom: 21%;
+    left: 23%;
+    right: 23%;
+    background-image: radial-gradient(circle closest-side, white 1%, transparent);
+  }
+  
+  .cartografoContainer {
+    position: absolute;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .mapImage {
+    align-self: center;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

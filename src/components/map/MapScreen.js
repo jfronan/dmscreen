@@ -7,22 +7,17 @@ export default class MapScreen extends React.Component {
 
   constructor(props) {
     super();
-    this.onAlternarPress = this.onAlternarPress.bind(this);
     this.imagenAMostrar = this.imagenAMostrar.bind(this);
   }
 
-  onAlternarPress() {
-    this.props.alternarCombateMapa();
-  }
-
   imagenAMostrar() {
-    return process.env.PUBLIC_URL + '/images/locations/city.jpg';
+    return process.env.PUBLIC_URL + '/images/locations' + this.props.mapa;
   }
 
   contentMapa() {
       return (
         <div id="mapArea" className="flex cartografoContainer fill">
-          <img src={this.imagenAMostrar()} alt='Fallo la carga :(' className="mapImage" align="middle"/>
+          <img src={this.imagenAMostrar()} alt='No se encuentra imagen' className="mapImage" align="middle"/>
         </div>
       )
   }
@@ -53,7 +48,7 @@ export default class MapScreen extends React.Component {
 
         <div id="mapArea" className="colorMapa flex cartografoBox cartografoContainer">
           <img src={this.imagenAMostrar()}
-            alt='Fallo la carga :('
+            alt='No se encuentra imagen'
             className="mapImage hoverPoint"
             align="middle"
             onClick={()=> this.props.ampliar(this.contentMapa())}
