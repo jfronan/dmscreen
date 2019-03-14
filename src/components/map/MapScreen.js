@@ -11,7 +11,7 @@ export default class MapScreen extends React.Component {
   }
 
   imagenAMostrar() {
-    return process.env.PUBLIC_URL + '/images/locations' + this.props.mapa;
+    return './images/locations' + this.props.mapa;
   }
 
   contentMapa() {

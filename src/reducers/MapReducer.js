@@ -1,5 +1,5 @@
 const initialState = {
-    mapa: '/Abacan.jpg'
+    mapa: '/Abacan.png'
   };
   
 const mapReducer = (state = initialState, action) => {
