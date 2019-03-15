@@ -25,7 +25,7 @@ export default class ModalZoom extends React.Component {
         <div className="modalContainer" onClick={()=>this.props.cerrarModal()}>
             <div className="modalBox" onClick={(e)=>{e.stopPropagation()}}>
                 {this.props.contenidoModalZoom}
-                <div className="botonAmpliar botonCerrar redish" onClick={()=>this.props.cerrarModal()}>X</div>
+                <div className="botonAmpliar botonCerrar hoverPoint clickFeedback redish" onClick={()=>this.props.cerrarModal()}>X</div>
             </div>
         </div>
         );

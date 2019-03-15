@@ -24,7 +24,7 @@ class Window extends React.Component {
   render() {
     return (
       <div className="colorMapa windowBox">
-        <div className="botonAmpliar greenish" onClick={()=>this.props.ampliar(this.content())}>⬆</div>
+        <div className="botonAmpliar hoverPoint clickFeedback greenish" onClick={()=>this.props.ampliar(this.content())}>⬆</div>
         <div className="boxTitle">
           {this.props.title}
         </div>

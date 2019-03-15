@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import './MapScreen.css';
 import Window from '../Window';
+import Navegador from './navegador/NavegadorContainer';
 
 export default class MapScreen extends React.Component {
 
@@ -11,7 +12,7 @@ export default class MapScreen extends React.Component {
   }
 
   imagenAMostrar() {
-    return './images/locations' + this.props.mapa;
+    return this.props.mapa;
   }
 
   contentMapa() {
@@ -39,6 +40,7 @@ export default class MapScreen extends React.Component {
         </div>
         <div id="navigator" className="windowContainer navigator">
           <Window title="Explorador">
+            <Navegador/>
           </Window>
         </div>
         <div id="logger" className="windowContainer loggerWindow">

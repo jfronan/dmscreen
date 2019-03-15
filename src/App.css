@@ -19,9 +19,6 @@
   align-content: center;
   justify-content: center;
 }
-.button:active {
-  margin-top: 1px;
-}
 
 .images {
   max-height: 75%;
@@ -129,12 +126,6 @@
   align-content: center;
   justify-content: center;
 }
-.botonAmpliar:hover {
-  cursor: pointer;
-}
-.botonAmpliar:active {
-  margin-top: 1px;
-}
 
 .botonCerrar {
   top: 3px;
@@ -175,10 +166,23 @@
 
 .flex {
   display: flex;
+  flex-direction: column
 }
 
 .hoverPoint:hover {
   cursor: pointer;
+}
+
+.clickFeedback:active {
+  margin-top: 1px;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.scroll {
+  overflow: scroll
 }
 
 

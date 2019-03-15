@@ -1,34 +1,36 @@
 import React from 'react';
-import '../../App.css';
+import '../../../App.css';
 import './Navegador.css';
+import { capitalizeWord } from '../../../utils/Utils';
 
 export default class Navegador extends React.Component {
 
   constructor(props) {
     super();
-    this.imagenAMostrar = this.imagenAMostrar.bind(this);
   }
 
   componentDidMount() {
     this.props.cargarArbol();
   }
 
-  imagenAMostrar() {
-    return process.env.PUBLIC_URL + '/images/locations' + this.props.mapa;
-  }
-
   render() {
     return (
-      <div className="App">
-        <div id="npc" className="windowContainer npcWindow">
+      <div className="flex fill">
+        <div id="navigatorLocationTitle" className="navegadorTitleBox">
+          <div className="navegadorBackButton navegadorTitle hoverPoint clickFeedback"
+            onClick={()=> {this.props.goBackToParent()}}>
+            ⬑
+          </div>
+          <div className="navegadorTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
         </div>
-
-        <div id="mapArea" className="colorMapa flex cartografoBox cartografoContainer">
-          <img src={this.imagenAMostrar()}
-            alt='No se encuentra imagen'
-            className="mapImage hoverPoint"
-            align="middle"
-          />
+        <div id="subLocsContainer" className="subLocContainer scroll">
+        {this.props.actualTreePath.subLocs
+            ? this.props.actualTreePath.subLocs.map((subLoc, index) => 
+                <div className="subLocBox hoverPoint" onClick={()=> {this.props.goToSubLoc(index)}}>
+                    <div className="subLocTitle">→ {capitalizeWord(subLoc.name)}</div>
+                </div>
+            )
+            : null}
         </div>
       </div>
     );

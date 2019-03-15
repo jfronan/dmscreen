@@ -23,13 +23,13 @@ export default class MainScreen extends React.Component {
       <div className="App">
         <ModalZoom/>
         <div className="opcionesBox">
-          <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton yellowish">
+          <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton clickFeedback yellowish">
             {this.props.modoCombate
             ? <img src={mapPage} className="roundImages" alt="Go to Map"/>
             : <img src={combatPage} className="roundImages" alt="Go to Combat"/>
             }
           </div>
-          <div id="opciones" className="button opcionesButton greyish">
+          <div id="opciones" className="button opcionesButton clickFeedback greyish">
             <img src={settingsIcon} className="roundImages" alt="Opciones"/>
           </div>
         </div>
