@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.relative {
+  position: relative;
+}
+
 .hidden {
   display: none;
 }
@@ -127,6 +131,22 @@
   justify-content: center;
 }
 
+.botonAnotar {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  height: 16px;
+  width: 16px;
+  background-image: radial-gradient(circle closest-side, white 1%, transparent);
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
 .botonCerrar {
   top: 3px;
 }
@@ -169,6 +189,10 @@
   flex-direction: column
 }
 
+.flex1 {
+  flex: 1;
+}
+
 .hoverPoint:hover {
   cursor: pointer;
 }
@@ -183,6 +207,10 @@
 
 .scroll {
   overflow: scroll
+}
+
+iframe[seamless] {
+  border: none;
 }
 
 

@@ -5,9 +5,7 @@ import * as mapActions from '../../../actions/MapScreenAction';
 const mapStateToProps = state => {
   return {
     arbol: state.map.arbol,
-    mapa: state.map.mapa,
-    actualTreePath: state.map.actualTreePath,
-    actualPath: state.map.actualPath
+    actualTreePath: state.map.actualTreePath
   };
 };
 

@@ -1,7 +1,8 @@
 const initialState = {
     modoCombate: false,
     modalZoomAbierto: false,
-    contenidoModalZoom: null
+    contenidoModalZoom: null,
+    contenidoNotas: []
   };
   
 const mainReducer = (state = initialState, action) => {
@@ -23,6 +24,16 @@ const mainReducer = (state = initialState, action) => {
         modalZoomAbierto: false,
         contenidoModalZoom: null
     }
+    case 'AGREGAR_NOTA':
+      return {
+        ...state,
+        contenidoNotas: state.contenidoNotas.concat(action.payload)
+      }
+    case 'REMOVER_NOTA':
+      return {
+        ...state,
+        contenidoNotas: state.contenidoNotas.splice(action.payload, 1)
+      }
 
     default: return state;
   }

@@ -11,7 +11,8 @@ const initialState = {
       },
     actualTreePath: {},
     actualPath: LOCATIONS + '/world',
-    mapa: LOCATIONS + '/world/World.jpeg'
+    mapa: LOCATIONS + '/world/World.jpeg',
+    locDesc: LOCATIONS + '/world/info.html'
   };
   
 const mapReducer = (state = initialState, action) => {
@@ -22,7 +23,8 @@ const mapReducer = (state = initialState, action) => {
         arbol: action.payload,
         actualTreePath: action.payload,
         mapa: LOCATIONS + action.payload.imageRoute,
-        actualPath: LOCATIONS + '/' + action.payload.name
+        actualPath: LOCATIONS + '/' + action.payload.name,
+        locDesc: LOCATIONS + '/' + action.payload.name + '/info.html'
       };
 
     case 'VOLVER_LOCACION_PADRE':
@@ -47,14 +49,17 @@ const mapReducer = (state = initialState, action) => {
         ...state,
         actualTreePath: parentRef(),
         mapa: LOCATIONS + parentRef().imageRoute,
-        actualPath: parentPath
+        actualPath: parentPath,
+        locDesc: parentPath + '/info.html'
       };
     case 'IR_A_SUBLOC':
+      const subLoc = state.actualTreePath.subLocs[action.payload];
       return {
         ...state,
-        actualTreePath: state.actualTreePath.subLocs[action.payload],
-        mapa: LOCATIONS + state.actualTreePath.subLocs[action.payload].imageRoute,
-        actualPath: state.actualPath + '/' + state.actualTreePath.subLocs[action.payload].name
+        actualTreePath: subLoc,
+        mapa: LOCATIONS + subLoc.imageRoute,
+        actualPath: state.actualPath + '/' + subLoc.name,
+        locDesc: state.actualPath + '/' + subLoc.name + '/info.html'
       };
 
     default: return state;
