@@ -12,7 +12,7 @@ class Window extends React.Component {
 
   content() {
     return (
-      <div className="colorMapa windowBox">
+      <div className="colorMapa paper windowBox">
         <p className="boxTitle">{this.props.title}</p>
         <div id="windowChildrenContainer" className="fill relative">
           {this.props.children}
@@ -23,7 +23,7 @@ class Window extends React.Component {
 
   render() {
     return (
-      <div className="colorMapa windowBox flex">
+      <div className="colorMapa paper windowBox flex">
         <div className="botonAmpliar hoverPoint clickFeedback greenish" onClick={()=>this.props.ampliar(this.content())}>⬆</div>
         <div className="boxTitle">
           {this.props.title}

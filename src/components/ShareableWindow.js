@@ -23,7 +23,7 @@ class ShareableWindow extends React.Component {
         <div className="fill">
           <div
             className="botonAnotar hoverPoint clickFeedback"
-            onClick={()=>this.props.anotar(this.props.titulo, this.content())}>
+            onClick={()=>this.props.anotar(this.props.titulo, this.props.color, this.content())}>
                 &#128214;
           </div>
           <div id="windowChildrenContainer" className="fill">
@@ -41,7 +41,7 @@ const mapStateToProps = state => {
   
   const mapDispatchToProps = dispatch => {
     return {
-      anotar: (titulo, content) => dispatch(mainActions.anotar(titulo, content))
+      anotar: (titulo, color, content) => dispatch(mainActions.anotar(titulo, color, content))
     };
   };
   

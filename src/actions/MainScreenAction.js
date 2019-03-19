@@ -19,11 +19,12 @@ export const cerrarModalZoom = () => {
     };
 };
 
-export const anotar = (titulo, content) => {
+export const anotar = (titulo, color, content) => {
   return {
     type: 'AGREGAR_NOTA',
     payload: {
       titulo: titulo,
+      color: color,
       content: content
     }
   }
@@ -33,6 +34,19 @@ export const eliminarNota = (index) => {
   return {
     type: 'REMOVER_NOTA',
     payload: index
+  }
+};
+
+export const mostrarNota = (index) => {
+  return {
+    type: 'MOSTRAR_NOTA',
+    payload: index
+  }
+};
+
+export const ocultarNota = () => {
+  return {
+    type: 'DEJAR_DE_MOSTRAR_NOTA'
   }
 };
 

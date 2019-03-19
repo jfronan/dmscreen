@@ -12,11 +12,11 @@ export default class NotasArea extends React.Component {
   render() {
     var template = this.props.locDesc;
     return (
-      <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)}>
+      <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
         <div className="springreen contentTitleBox">
           <div className="contentTitleBoxTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
         </div>
-        <iframe className="fill" src={template} seamless/>
+        <iframe id="iframe" className="fill" src={template} seamless/>
       </ShareableWindow>
     );
   }

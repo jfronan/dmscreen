@@ -14,6 +14,11 @@ export default class MainScreen extends React.Component {
     this.onAlternarPress = this.onAlternarPress.bind(this);
   }
 
+  componentDidMount() {
+    var iframes = document.getElementById('iframe');
+    iframes.contentDocument.write("fred rules");
+  }
+
   onAlternarPress() {
     this.props.alternarCombateMapa();
   }

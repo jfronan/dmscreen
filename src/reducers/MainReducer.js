@@ -2,7 +2,8 @@ const initialState = {
     modoCombate: false,
     modalZoomAbierto: false,
     contenidoModalZoom: null,
-    contenidoNotas: []
+    contenidoNotas: [],
+    mostrandoNota: null
   };
   
 const mainReducer = (state = initialState, action) => {
@@ -25,14 +26,37 @@ const mainReducer = (state = initialState, action) => {
         contenidoModalZoom: null
     }
     case 'AGREGAR_NOTA':
+      const isAlreadyAdded = () => {
+        for (var i=0; i < state.contenidoNotas.length; i++) {
+          if ((state.contenidoNotas[i].titulo === action.payload.titulo)
+            && (state.contenidoNotas[i].color === action.payload.color)) {
+            return true;
+          }
+        }
+        return false;
+      }
       return {
         ...state,
-        contenidoNotas: state.contenidoNotas.concat(action.payload)
+        contenidoNotas: isAlreadyAdded() ? state.contenidoNotas : state.contenidoNotas.concat(action.payload)
       }
     case 'REMOVER_NOTA':
+      // Se usa slice(0) para almacenar el valor del campo del state en vez de la referencia
+      const nuevoContenido = state.contenidoNotas.slice(0);
+      // Se hace en linea sepaarada, porque la funcion, en realidad, retorna el elemento eliminado
+      nuevoContenido.splice(action.payload, 1);
       return {
         ...state,
-        contenidoNotas: state.contenidoNotas.splice(action.payload, 1)
+        contenidoNotas: nuevoContenido
+      }
+    case 'MOSTRAR_NOTA':
+      return {
+        ...state,
+        mostrandoNota: action.payload
+      }
+    case 'DEJAR_DE_MOSTRAR_NOTA':
+      return {
+        ...state,
+        mostrandoNota: null
       }
 
     default: return state;

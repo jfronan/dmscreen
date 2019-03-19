@@ -29,7 +29,7 @@ export default class Npcs extends React.Component {
     if (mostrarDetalles) {
         console.log(this.props.urlDetallesNPC);
       return (
-        <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)}>
+        <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)} color="yellowish">
             <div className="yellowish contentTitleBox">
               <div className="navegacionBackButton contentTitleBoxTitle hoverPoint clickFeedback"
                 onClick={()=> {this.props.ocultarDetallesNPC()}}>
@@ -37,7 +37,7 @@ export default class Npcs extends React.Component {
               </div>
               <div className="contentTitleBoxTitle">{capitalizeWord(this.props.nombreDetalleNPC)}</div>
             </div>
-            <iframe className="fill" src={this.props.urlDetallesNPC} seamless/>
+            <iframe id="iframe" className="fill" src={this.props.urlDetallesNPC} seamless/>
         </ShareableWindow>
         );
     }
