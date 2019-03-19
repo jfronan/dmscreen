@@ -14,7 +14,9 @@ var createTree = function(subruta, subname) {
     var arbol = {
           name: subname || 'world',
           parentRoute: subruta ? actualRoute.substring(0, lastLocationPos) : null,
-          extData: {},
+          extData: {
+            npcs: []
+          },
           imageRoute: '',
           subLocs: []
         };
@@ -22,6 +24,10 @@ var createTree = function(subruta, subname) {
     console.log(items);
     for (var i=0; i < items.length; i++) {
         var file = ruta + '/' + items[i];
+        if (items[i] === 'extData.json') {
+            var extdatafileroute = ruta + '/' + items[i];
+            arbol.extData = require(extdatafileroute);
+        }
         if (isImageString(items[i])) {
             arbol.imageRoute = actualRoute + '/' + items[i];
         }

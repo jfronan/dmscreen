@@ -16,12 +16,12 @@ export default class Navegador extends React.Component {
   render() {
     return (
       <div className="flex fill">
-        <div id="navigatorLocationTitle" className="navegadorTitleBox">
-          <div className="navegadorBackButton navegadorTitle hoverPoint clickFeedback"
+        <div id="navigatorLocationTitle" className="springreen contentTitleBox">
+          <div className="navegacionBackButton contentTitleBoxTitle hoverPoint clickFeedback"
             onClick={()=> {this.props.goBackToParent()}}>
             ⬑
           </div>
-          <div className="navegadorTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
+          <div className="contentTitleBoxTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
         </div>
         <div id="subLocsContainer" className="subLocContainer scroll">
         {this.props.actualTreePath.subLocs

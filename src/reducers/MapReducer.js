@@ -1,18 +1,22 @@
-import { LOCATIONS } from '../Constants';
+import { LOCATIONS, PERSONAJES } from '../Constants';
 
 const initialState = {
     arbol: {
         name: '',
         parentRoute: '',
         parentRef: {},
-        extData: {},
+        extData: {
+          npcs: []
+        },
         imageRoute: '',
         subLocs: []
       },
     actualTreePath: {},
     actualPath: LOCATIONS + '/world',
     mapa: LOCATIONS + '/world/World.jpeg',
-    locDesc: LOCATIONS + '/world/info.html'
+    locDesc: LOCATIONS + '/world/info.html',
+    detalleNPC: '',
+    mostrandoDatosNPC: false
   };
   
 const mapReducer = (state = initialState, action) => {
@@ -48,19 +52,39 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         actualTreePath: parentRef(),
-        mapa: LOCATIONS + parentRef().imageRoute,
+        mapa: parentRef.imageRoute !== '' ? LOCATIONS + parentRef().imageRoute : state.mapa,
         actualPath: parentPath,
-        locDesc: parentPath + '/info.html'
+        locDesc: parentPath + '/info.html',
+        nombreDetalleNPC: '',
+        detalleNPC: '',
+        mostrandoDatosNPC: false
       };
     case 'IR_A_SUBLOC':
       const subLoc = state.actualTreePath.subLocs[action.payload];
       return {
         ...state,
         actualTreePath: subLoc,
-        mapa: LOCATIONS + subLoc.imageRoute,
+        mapa: subLoc.imageRoute !== '' ? LOCATIONS + subLoc.imageRoute : state.mapa,
         actualPath: state.actualPath + '/' + subLoc.name,
-        locDesc: state.actualPath + '/' + subLoc.name + '/info.html'
+        locDesc: state.actualPath + '/' + subLoc.name + '/info.html',
+        nombreDetalleNPC: '',
+        detalleNPC: '',
+        mostrandoDatosNPC: false
       };
+    case 'MOSTRAR_DETALLE_NPC':
+    return {
+        ...state,
+        nombreDetalleNPC: action.payload,
+        detalleNPC: PERSONAJES + '/npc/' + action.payload + '/profile.html',
+        mostrandoDatosNPC: true
+    }
+    case 'OCULTAR_DETALLE_NPC':
+    return {
+        ...state,
+        nombreDetalleNPC: '',
+        detalleNPC: '',
+        mostrandoDatosNPC: false
+    }
 
     default: return state;
   }

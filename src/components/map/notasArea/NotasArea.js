@@ -13,6 +13,9 @@ export default class NotasArea extends React.Component {
     var template = this.props.locDesc;
     return (
       <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)}>
+        <div className="springreen contentTitleBox">
+          <div className="contentTitleBoxTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
+        </div>
         <iframe className="fill" src={template} seamless/>
       </ShareableWindow>
     );

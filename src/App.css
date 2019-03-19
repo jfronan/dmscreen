@@ -145,6 +145,34 @@
   align-items: center;
   align-content: center;
   justify-content: center;
+  z-index: 5;
+}
+
+.contentTitleBox {
+  position: relative;
+  flex: 1;
+  max-height: 16px;
+  min-height: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: springgreen;
+  border: solid 1px black;
+  border-radius: 1px;
+}
+
+.contentTitleBoxTitle {
+    line-height:  16px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.navegacionBackButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .botonCerrar {
@@ -161,6 +189,10 @@
 
 .greenish {
   background-color: #90ee90;
+}
+
+.springreen {
+  background-color: #00ff7f;
 }
 
 .redish {

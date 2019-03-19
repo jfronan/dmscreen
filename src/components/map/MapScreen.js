@@ -4,6 +4,7 @@ import './MapScreen.css';
 import Window from '../Window';
 import Navegador from './navegador/NavegadorContainer';
 import NotasArea from './notasArea/NotasAreaContainer';
+import NPCs from './npcs/NpcsContainer';
 
 export default class MapScreen extends React.Component {
 
@@ -29,6 +30,7 @@ export default class MapScreen extends React.Component {
       <div className="App">
         <div id="npc" className="windowContainer npcWindow">
           <Window title="NPCs">
+            <NPCs/>
           </Window>
         </div>
         <div id="notas" className="windowContainer notasWindow">
