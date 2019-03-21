@@ -1,7 +1,7 @@
 import React from 'react';
 import ShareableWindow from '../../ShareableWindow';
 import '../../../App.css';
-import { capitalizeWord } from '../../../utils/Utils';
+import { capitalizeWord, renderIframe } from '../../../utils/Utils';
 
 export default class NotasArea extends React.Component {
 
@@ -12,12 +12,14 @@ export default class NotasArea extends React.Component {
   render() {
     var template = this.props.locDesc;
     return (
-      <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
+      <div className="fill">
         <div className="springreen contentTitleBox">
           <div className="contentTitleBoxTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
         </div>
-        <iframe className="fill" src={template} seamless/>
-      </ShareableWindow>
+        <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
+          {renderIframe(template, "fill")}
+        </ShareableWindow>
+      </div>
     );
   }
 }

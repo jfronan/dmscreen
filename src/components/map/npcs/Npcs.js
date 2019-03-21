@@ -1,7 +1,7 @@
 import React from 'react';
 import ShareableWindow from '../../ShareableWindow';
 import '../../../App.css';
-import { capitalizeWord } from '../../../utils/Utils';
+import { capitalizeWord, renderIframe } from '../../../utils/Utils';
 
 export default class Npcs extends React.Component {
 
@@ -28,17 +28,19 @@ export default class Npcs extends React.Component {
     }
     if (mostrarDetalles) {
       return (
-        <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)} color="yellowish">
-            <div className="yellowish contentTitleBox">
-              <div className="navegacionBackButton contentTitleBoxTitle hoverPoint clickFeedback"
-                onClick={()=> {this.props.ocultarDetallesNPC()}}>
-                  ⬑
-              </div>
-              <div className="contentTitleBoxTitle">{capitalizeWord(this.props.nombreDetalleNPC)}</div>
+        <div className="fill">
+          <div className="yellowish contentTitleBox">
+            <div className="navegacionBackButton contentTitleBoxTitle hoverPoint clickFeedback"
+              onClick={()=> {this.props.ocultarDetallesNPC()}}>
+                ⬑
             </div>
-            <iframe className="fill" src={this.props.urlDetallesNPC} seamless/>
-        </ShareableWindow>
-        );
+            <div className="contentTitleBoxTitle">{capitalizeWord(this.props.nombreDetalleNPC)}</div>
+          </div>
+          <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)} color="yellowish">
+              {renderIframe(this.props.urlDetallesNPC, "fill")}
+          </ShareableWindow>
+        </div>
+      );
     }
     return null;
   }
