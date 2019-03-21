@@ -85,6 +85,22 @@
   padding: 4px;
 }
 
+.loggerWindowMap {
+  bottom: 1%;
+  left: 21%;
+  width: 57%;
+  height: 18%;
+  z-index: 10;
+}
+
+.loggerWindowCombat {
+  bottom: 1%;
+  right: 0;
+  width: 20%;
+  height: 18%;
+  z-index: 10;
+}
+
 .windowBox {
   position: relative;
   border: 4px solid;

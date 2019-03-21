@@ -6,6 +6,7 @@ import settingsIcon from "../assets/settingsIcon.png";
 
 import MapScreen from "./map/MapScreenContainer";
 import ModalZoom from "./ModalZoomContainer";
+import Window from "./Window";
 
 export default class MainScreen extends React.Component {
 
@@ -25,8 +26,8 @@ export default class MainScreen extends React.Component {
         <div className="opcionesBox">
           <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton clickFeedback yellowish">
             {this.props.modoCombate
-            ? <img src={mapPage} className="roundImages" alt="Go to Map"/>
-            : <img src={combatPage} className="roundImages" alt="Go to Combat"/>
+            ? <img src={mapPage} className="roundImages" alt="Go to Map" title="Go to Map"/>
+            : <img src={combatPage} className="roundImages" alt="Go to Combat" title="Go to Combat"/>
             }
           </div>
           <div id="opciones" className="button opcionesButton clickFeedback greyish">
@@ -38,6 +39,11 @@ export default class MainScreen extends React.Component {
           <MapScreen/>
         </div>
         <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>Combate (WIP)</div>
+
+        <div id="logger" className={this.props.modoCombate ? "windowContainer loggerWindowCombat" : "windowContainer loggerWindowMap"}>
+          <Window title="Log">
+          </Window>
+        </div>
       </div>
     );
   }

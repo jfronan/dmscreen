@@ -49,10 +49,6 @@ export default class MapScreen extends React.Component {
             <Navegador/>
           </Window>
         </div>
-        <div id="logger" className="windowContainer loggerWindow">
-          <Window title="Log">
-          </Window>
-        </div>
 
         <div id="mapArea" className="colorMapa flex cartografoBox cartografoContainer">
           <img src={this.imagenAMostrar()}
