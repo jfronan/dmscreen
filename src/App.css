@@ -257,7 +257,7 @@
 }
 
 .scroll {
-  overflow: scroll;
+  overflow: auto;
 }
 
 iframe[seamless] {

@@ -9,7 +9,8 @@ const isImageString = (fileName)=> {
 
 var createTree = function(subruta, subname) {
     var ruta = subruta || rutaLocaciones;
-    var actualRoute = '/' + ruta.split('/locations/')[1];
+    var rutaFragment = ruta.split('/locations/')[1] ? ruta.split('/locations/')[1] : ruta.split('\\locations\\')[1]
+    var actualRoute = '/' + rutaFragment;
     var lastLocationPos = actualRoute.lastIndexOf('/' + subname);
     var arbol = {
           name: subname || 'world',
@@ -21,7 +22,6 @@ var createTree = function(subruta, subname) {
           subLocs: []
         };
     var items = fs.readdirSync(ruta)
-    console.log(items);
     for (var i=0; i < items.length; i++) {
         var file = ruta + '/' + items[i];
         if (items[i] === 'extData.json') {
