@@ -7,7 +7,7 @@ const isImageString = (fileName)=> {
     return (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".svg") || fileName.endsWith(".gif"))
 };
 
-var createTree = function(subruta, subname) {
+var createSubTree = function(subruta, subname) {
     var ruta = subruta || rutaLocaciones;
     var rutaFragment = ruta.split('/locations/')[1] ? ruta.split('/locations/')[1] : ruta.split('\\locations\\')[1]
     var actualRoute = '/' + rutaFragment;
@@ -32,14 +32,18 @@ var createTree = function(subruta, subname) {
             arbol.imageRoute = actualRoute + '/' + items[i];
         }
         if (fs.lstatSync(file).isDirectory()) {
-            arbol.subLocs.push(createTree((ruta + '/' + items[i]), items[i]))
+            arbol.subLocs.push(createSubTree((ruta + '/' + items[i]), items[i]))
         };
     }
     if (arbol.name === 'world') {
         console.log('ARBOL:', JSON.stringify(arbol));
     }
     return arbol;
-
 }
 
-module.exports = createTree()
+var createTree = (req, res) => {
+    var arbol = createSubTree();
+    res.json(arbol);
+}
+
+module.exports = {createTree}
