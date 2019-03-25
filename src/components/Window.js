@@ -23,7 +23,7 @@ class Window extends React.Component {
 
   render() {
     return (
-      <div className={this.props.modoCombate ? "sangron paper windowBox felx" : "colorMapa paper windowBox flex"}>
+      <div className={this.props.modoCombate ? "sangron paper windowBox flex" : "colorMapa paper windowBox flex"}>
         <div className="botonAmpliar hoverPoint clickFeedback greenish" onClick={()=>this.props.ampliar(this.content())}>⬆</div>
         <div className="boxTitle">
           {this.props.title}

@@ -7,6 +7,7 @@ import settingsIcon from "../assets/settingsIcon.png";
 import MapScreen from "./map/MapScreenContainer";
 import ModalZoom from "./ModalZoomContainer";
 import Window from "./Window";
+import LogWindow from "./logger/LogWindowContainer";
 
 export default class MainScreen extends React.Component {
 
@@ -42,6 +43,7 @@ export default class MainScreen extends React.Component {
 
         <div id="logger" className={this.props.modoCombate ? "windowContainer loggerWindowCombat" : "windowContainer loggerWindowMap"}>
           <Window title="Log">
+            <LogWindow/>
           </Window>
         </div>
       </div>

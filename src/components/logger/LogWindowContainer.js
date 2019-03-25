@@ -1,15 +1,16 @@
 import LogWindow from './LogWindow';
 import { connect } from 'react-redux';
+import * as mainActions from '../../actions/MainScreenAction';
 
 const mapStateToProps = state => {
   return {
-    locDesc: state.map.locDesc,
-    actualTreePath: state.map.actualTreePath
+    messages: state.main.mensajesLogger
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    enviarMensaje: (mensaje) => dispatch(mainActions.enviarMensaje(mensaje))
   };
 };
 

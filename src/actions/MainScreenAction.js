@@ -50,6 +50,17 @@ export const ocultarNota = () => {
   }
 };
 
+export const enviarMensaje = (mensaje)=> {
+  var date = new Date();
+  return {
+    type: 'NUEVO_MENSAJE_LOGGER',
+    payload: {
+      dateTime: date.toLocaleString(),
+      text: mensaje
+    }
+  }
+}
+
   /*
 export const getEjecutivosFailure = (payload) => {
     return async (dispatch) => {

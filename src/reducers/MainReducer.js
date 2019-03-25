@@ -3,7 +3,8 @@ const initialState = {
     modalZoomAbierto: false,
     contenidoModalZoom: null,
     contenidoNotas: [],
-    mostrandoNota: null
+    mostrandoNota: null,
+    mensajesLogger: []
   };
   
 const mainReducer = (state = initialState, action) => {
@@ -57,6 +58,11 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         mostrandoNota: null
+      }
+    case 'NUEVO_MENSAJE_LOGGER':
+      return {
+        ...state,
+        mensajesLogger: state.mensajesLogger.concat(action.payload)
       }
 
     default: return state;
