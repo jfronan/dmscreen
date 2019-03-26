@@ -85,6 +85,38 @@
   padding: 4px;
 }
 
+.notasWindowMap {
+  top: 50%;
+  left: 0;
+  width: 20%;
+  height: 48%;
+  z-index: 10;
+}
+
+.notaAreaWindowMap {
+  top: 50%;
+  right: 0;
+  width: 20%;
+  height: 48%;
+  z-index: 10;
+}
+
+.notasWindowCombat {
+  top: 60%;
+  left: 0;
+  width: 41%;
+  height: 38%;
+  z-index: 10;
+}
+
+.notaAreaWindowCombat {
+  top: 60%;
+  right: 0;
+  width: 20%;
+  height: 38%;
+  z-index: 10;
+}
+
 .loggerWindowMap {
   bottom: 1%;
   left: 21%;
@@ -95,8 +127,8 @@
 
 .loggerWindowCombat {
   bottom: 1%;
-  right: 0;
-  width: 20%;
+  left: 42%;
+  width: 36%;
   height: 18%;
   z-index: 10;
 }
@@ -263,11 +295,11 @@
 }
 
 .colorMapa {
-  background-color: #b5d1fd;
+  background-color: rgb(181, 209, 253);
 }
 
 .sangron {
-  background-color: #7f2727;
+  background-color: rgb(129, 70, 70);
 }
 
 .floatingBox {

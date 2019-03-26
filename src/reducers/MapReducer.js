@@ -32,6 +32,9 @@ const mapReducer = (state = initialState, action) => {
       };
 
     case 'VOLVER_LOCACION_PADRE':
+      if (state.actualTreePath.parentRoute === null || state.actualTreePath.parentRoute === '') {
+        return state;
+      }
       var lastLocationPos = state.actualPath.lastIndexOf('/' + state.actualTreePath.name);
       const parentPath = state.actualPath.substring(0, lastLocationPos)
       var parentRef = ()=> {

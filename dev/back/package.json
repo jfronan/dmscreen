@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js $INIT_CWD %INIT_CWD%",
+    "installRun": "npm install && nodemon index.js pwd cd",
+    "createExec": "nexe -i index.js -o ../dmscreen -r '../front' -r '../data' -cwd process.execPath"
   },
-  "author": "Juan Francisoc Ronanduano",
+  "author": "Juan Francisco Ronanduano",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "opn": "^5.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"

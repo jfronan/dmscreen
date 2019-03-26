@@ -1,7 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 
-var rutaLocaciones = path.join(__dirname+'/../../data/locations/world')
+var devLoc = (process.argv[2] ? process.argv[2]+'/../' : false || process.argv[3] ? process.argv[3]+'/../' : false || path.resolve(process.execPath)+'/../');
+
+var rutaLocaciones = path.join(devLoc+'data/locations/world');
 
 const isImageString = (fileName)=> {
     return (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".svg") || fileName.endsWith(".gif"))

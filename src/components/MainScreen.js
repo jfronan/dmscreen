@@ -5,9 +5,12 @@ import combatPage from "../assets/combatPage.png";
 import settingsIcon from "../assets/settingsIcon.png";
 
 import MapScreen from "./map/MapScreenContainer";
+import CombatScreen from "./combat/CombatScreenContainer";
 import ModalZoom from "./ModalZoomContainer";
 import Window from "./Window";
 import LogWindow from "./logger/LogWindowContainer";
+import NotasArea from './notasArea/NotasAreaContainer';
+import Notas from './notas/NotasContainer';
 
 export default class MainScreen extends React.Component {
 
@@ -39,8 +42,20 @@ export default class MainScreen extends React.Component {
         <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App colorMapa'}>
           <MapScreen/>
         </div>
-        <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>Combate (WIP)</div>
+        <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>
+          <CombatScreen/>
+        </div>
 
+        <div id="notas" className={this.props.modoCombate ? "windowContainer notasWindowCombat" : "windowContainer notasWindowMap"}>
+          <Window title="Notas">
+            <Notas/>
+          </Window>
+        </div>
+        <div id="notaArea" className={this.props.modoCombate ? "windowContainer notaAreaWindowCombat" : "windowContainer notaAreaWindowMap"}>
+          <Window title="Notas del area">
+            <NotasArea/>
+          </Window>
+        </div>
         <div id="logger" className={this.props.modoCombate ? "windowContainer loggerWindowCombat" : "windowContainer loggerWindowMap"}>
           <Window title="Log">
             <LogWindow/>

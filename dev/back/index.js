@@ -1,5 +1,6 @@
 const locationTrees = require('./services/locationsTrees');
 const config = require('./config/config');
+const opn = require('opn');
 
 var express = require('express');
 var app = express();
@@ -14,4 +15,9 @@ app.get('/mapTree', locationTrees.createTree);
 
 app.listen(config.port, config.hostname, () => {
     console.log(`Server running at http://${config.hostname}:${config.port}/`);
+    opn(`http://${config.hostname}:${config.port}/`, 'google chrome', function (err) {
+      if (err) throw err;
+      console.log('The user closed the browser');
+      opn(`http://${config.hostname}:${config.port}/`);
+    });
 });

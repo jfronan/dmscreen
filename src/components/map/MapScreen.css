@@ -5,20 +5,6 @@
   width: 20%;
 }
 
-.notasWindow {
-  top: 50%;
-  left: 0;
-  width: 20%;
-  height: 48%;
-}
-
-.notaAreaWindow {
-  top: 50%;
-  right: 0;
-  width: 20%;
-  height: 48%;
-}
-
 .navigator {
   top: 11%;
   right: 0;
