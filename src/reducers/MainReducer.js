@@ -64,6 +64,11 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         mensajesLogger: state.mensajesLogger.concat(action.payload)
       }
+    case 'CARGAR_LOGS_SUCCESS':
+    return {
+      ...state,
+      mensajesLogger: action.payload.logs
+    }
 
     default: return state;
   }

@@ -12,6 +12,22 @@ export default class LogWindow extends React.Component {
     this.addEnterListener = this.addEnterListener.bind(this);
     this.removeEnterListener = this.removeEnterListener.bind(this);
     this.enterKeyFunction = this.enterKeyFunction.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.traerLogsGuardados();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.messages.length < this.props.messages.length) {
+      this.scrollToBottom();
+    }
+  }
+
+  scrollToBottom() {
+    var inputElem = document.getElementById("messagesContainer");
+    inputElem.scrollTo(0, inputElem.scrollHeight);
   }
 
   changeText(input) {
@@ -22,8 +38,6 @@ export default class LogWindow extends React.Component {
     if(event.keyCode === 13 && this.state.text !== '' && this.state.text !== null) {
         this.props.enviarMensaje(this.state.text);
         this.setState({text: ''});
-        var inputElem = document.getElementById("messagesContainer");
-        inputElem.scrollTo(0, inputElem.scrollHeight);
     }
   }
 

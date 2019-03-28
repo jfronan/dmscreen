@@ -10,7 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    enviarMensaje: (mensaje) => dispatch(mainActions.enviarMensaje(mensaje))
+    enviarMensaje: (mensaje) => dispatch(mainActions.enviarMensaje(mensaje)),
+    traerLogsGuardados: () => dispatch(mainActions.traerLogsGuardados())
   };
 };
 

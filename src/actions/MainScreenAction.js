@@ -1,3 +1,5 @@
+import { SERVER } from '../Constants'
+
 export const alternarCombateMapa = () => {
   return {
     type: 'ALTERNAR_PANTALLA_PRINCIPAL'
@@ -59,6 +61,19 @@ export const enviarMensaje = (mensaje)=> {
       text: mensaje
     }
   }
+}
+
+export const traerLogsGuardados = ()=> {
+  return async (dispatch) => {
+    fetch(SERVER + "logsRetriever")
+    .then((response)=> response.json())
+    .then((logs)=> {
+      dispatch ({
+        type: 'CARGAR_LOGS_SUCCESS',
+        payload: logs
+      });
+    })
+  };
 }
 
   /*

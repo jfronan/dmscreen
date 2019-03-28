@@ -12,11 +12,29 @@ import LogWindow from "./logger/LogWindowContainer";
 import NotasArea from './notasArea/NotasAreaContainer';
 import Notas from './notas/NotasContainer';
 
+import { SERVER } from '../Constants';
+
 export default class MainScreen extends React.Component {
 
   constructor(props) {
     super();
     this.onAlternarPress = this.onAlternarPress.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", (ev) => {
+      var data = {
+        logs: this.props.logs
+      };
+      ev.preventDefault();
+      fetch(SERVER + "cerrarApp", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      })
+    });
   }
 
   onAlternarPress() {
