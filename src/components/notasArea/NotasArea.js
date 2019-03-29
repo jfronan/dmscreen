@@ -12,13 +12,15 @@ export default class NotasArea extends React.Component {
   render() {
     var template = this.props.locDesc;
     return (
-      <div className="fill">
+      <div className="fill flex relative">
         <div className="springreen contentTitleBox">
           <div className="contentTitleBoxTitle">{capitalizeWord(this.props.actualTreePath.name)}</div>
         </div>
-        <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
-          {renderIframe(template, "fill")}
-        </ShareableWindow>
+        <div className="listBoxing">
+          <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
+            {renderIframe(template, "fill")}
+          </ShareableWindow>
+        </div>
       </div>
     );
   }

@@ -12,9 +12,9 @@ class Window extends React.Component {
 
   content() {
     return (
-      <div className={this.props.modoCombate ? "sangron paper windowBox" : "colorMapa paper windowBox"}>
+      <div className={this.props.modoCombate ? "sangron paper windowBox flex" : "colorMapa paper windowBox flex"}>
         <p className="boxTitle">{this.props.title}</p>
-        <div id="windowChildrenContainer" className="fill relative">
+        <div id="windowChildrenContainer" className="flex1 relative">
           {this.props.children}
         </div>
       </div>

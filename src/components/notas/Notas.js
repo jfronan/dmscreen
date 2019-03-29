@@ -12,17 +12,19 @@ export default class Notas extends React.Component {
     if (typeof this.props.mostrandoNota !== 'number') {
       return (
         <div className="fill">
-          {this.props.contenidoNotas.map((nota, index) => 
-            <div className={nota.color + " contentTitleBox hoverPoint"}>
-              <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarNota(index)}>
-                {capitalizeWord(nota.titulo)}
+          <div className="listBoxing">
+            {this.props.contenidoNotas.map((nota, index) => 
+              <div className={nota.color + " contentTitleBox hoverPoint"}>
+                <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarNota(index)}>
+                  {capitalizeWord(nota.titulo)}
+                </div>
+                <div className="botonAmpliar hoverPoint clickFeedback redish"
+                onClick={()=>this.props.eliminarNota(index)}>
+                  X
+                </div>
               </div>
-              <div className="botonAmpliar hoverPoint clickFeedback redish"
-              onClick={()=>this.props.eliminarNota(index)}>
-                X
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )
     }

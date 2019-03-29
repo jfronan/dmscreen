@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import './CombatScreen.css';
 import Window from '../Window';
+import Personajes from './personajes/PersonajesContainer';
 
 export default class CombatScreen extends React.Component {
 
@@ -14,6 +15,7 @@ export default class CombatScreen extends React.Component {
       <div className="App">
         <div id="personajes" className="windowContainer pjWindow">
           <Window title="Personajes">
+            <Personajes/>
           </Window>
         </div>
         <div id="hechizos" className="windowContainer hechizosWindow">

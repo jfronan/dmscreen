@@ -143,6 +143,20 @@
   width: 100%;
 }
 
+.listBoxing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+}
+
+.shareableContentBoxing {
+  top: 18px;
+}
+
 .loggerMessage {
   line-height: 14px;
   font-size: 12px;
@@ -167,10 +181,11 @@
   font-size: 14px;
   flex: 1;
   outline: none;
+  background-color: darkgrey;
 }
 
 .loggerInputContainer input:focus {
-  border: solid 1px #6495ed
+  border: solid 2px #6495ed
 }
 
 .windowBox {

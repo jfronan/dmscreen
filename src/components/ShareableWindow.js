@@ -12,7 +12,7 @@ class ShareableWindow extends React.Component {
   
     content() {
       return (
-        <div className="relative fill">
+        <div className="listBoxing shareableContentBoxing">
           {this.props.children}
         </div>
       )
@@ -20,14 +20,14 @@ class ShareableWindow extends React.Component {
   
     render() {
       return (
-        <div className="fill">
+        <div className="fill flex">
           <div
             className="botonAnotar hoverPoint clickFeedback"
             onClick={()=>this.props.anotar(this.props.titulo, this.props.color, this.content())}>
                 &#128214;
           </div>
-          <div id="windowChildrenContainer" className="fill">
-            {this.props.children}
+          <div id="windowChildrenContainer" className="listBoxing shareableContentBoxing">
+              {this.props.children}
           </div>
         </div>
       );
