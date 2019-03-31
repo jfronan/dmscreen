@@ -50,7 +50,7 @@ export default class Personajes extends React.Component {
                 );
             case 'pcs':
                 return (
-                    <div className="fill backgroundFuse">
+                    <div className="fill">
                         <div className="listBoxing personajesListContainer">
                             {this.props.pcs.map((personaje)=> 
                                 <div className="greenish contentTitleBox hoverPoint">
@@ -63,7 +63,7 @@ export default class Personajes extends React.Component {
                     </div>
                 );
             case 'area':
-                return (<div className="flex1 colorMapa backgroundFuse">En construccion</div>);
+                return (<div className="fill">En construccion</div>);
             default:
                 return null;
             }
