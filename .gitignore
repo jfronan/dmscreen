@@ -13,7 +13,7 @@
 /build
 /dev/front/index.html
 /dev/front/index.js
-/dev/data/saveData
+/dev/data/saveData/*
 
 # misc
 .DS_Store

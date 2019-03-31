@@ -1,9 +1,9 @@
 var fs = require('fs');
 var path = require('path');
+var constants = require('../constants');
 
-var devLoc = (process.argv[2] ? process.argv[2]+'/../' : false || process.argv[3] ? process.argv[3]+'/../' : false || path.resolve(process.execPath)+'/../');
 
-var rutaPersonajes = path.join(devLoc+'data/personajes');
+var rutaPersonajes = path.join(constants.devLoc()+'data/personajes');
 
 var createList = (req, res) => {
     var rutaPCs = rutaPersonajes + '/pcs';

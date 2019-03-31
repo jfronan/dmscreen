@@ -1,9 +1,9 @@
 var fs = require('fs');
 var path = require('path');
+var constants = require('../constants');
 
-var devLoc = (process.argv[2] ? process.argv[2]+'/../' : false || process.argv[3] ? process.argv[3]+'/../' : false || path.resolve(process.execPath)+'/../');
 
-var rutaLocalStorage = path.join(devLoc+'data/saveData');
+var rutaLocalStorage = path.join(constants.devLoc()+'data/saveData');
 
 var store = (req, res) => {
     const reducerData = req.body;
@@ -14,8 +14,12 @@ var store = (req, res) => {
 }
 
 var retrieve = (req, res) => {
-    var logs = require(rutaLocalStorage + "/logs.json").logs
-    res.json({logs: logs})
+    try {
+        var logs = require(rutaLocalStorage + "/logs.json").logs
+        res.json({logs: logs})
+    } catch (e) {
+        res.json({logs: []})
+    }
 }
 
 module.exports = {store, retrieve}
