@@ -15,6 +15,7 @@
 /dev/front/index.js
 /dev/data/saveData/*
 !/dev/data/saveData/Readme.txt
+/out
 
 # misc
 .DS_Store

@@ -13,7 +13,7 @@ export default class Personajes extends React.Component {
   }
 
   componentDidMount() {
-    this.props.cargarPersonajes();
+    // this.props.cargarPersonajes();
   }
 
   render() {
@@ -31,9 +31,9 @@ export default class Personajes extends React.Component {
                 return (
                     <div className="fill">
                         <div className="messagesContainer personajesListContainer backgroundFuse">
-                            {this.props.bestiario.map((monstruo)=> 
+                            {this.props.bestiario.map((monstruo, index)=> 
                                 <div className="redish contentTitleBox hoverPoint">
-                                    <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(monstruo.nombre)}>
+                                    <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(monstruo, "redish")}>
                                         {monstruo.nombre}
                                     </div>
                                     <div className="botonAmpliar hoverPoint clickFeedback yellowish"
@@ -52,9 +52,9 @@ export default class Personajes extends React.Component {
                 return (
                     <div className="fill">
                         <div className="listBoxing personajesListContainer">
-                            {this.props.pcs.map((personaje)=> 
+                            {this.props.pcs.map((personaje, index)=> 
                                 <div className="greenish contentTitleBox hoverPoint">
-                                    <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(personaje.nombre)}>
+                                    <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(personaje, "greenish")}>
                                         {personaje.nombre}
                                     </div>
                                 </div>
