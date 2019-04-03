@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../App.css';
 import { capitalizeWord } from '../../utils/Utils';
 
 export default class Notas extends React.Component {
@@ -14,7 +13,7 @@ export default class Notas extends React.Component {
         <div className="fill">
           <div className="listBoxing">
             {this.props.contenidoNotas.map((nota, index) => 
-              <div className={nota.color + " contentTitleBox hoverPoint"}>
+              <div key={"nota" + nota.titulo + index} className={nota.color + " contentTitleBox hoverPoint"}>
                 <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarNota(index)}>
                   {capitalizeWord(nota.titulo)}
                 </div>

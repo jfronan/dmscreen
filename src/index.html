@@ -3,8 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <title>Dm Screen</title>
+    <link rel="stylesheet" type="text/css" href="./css/App.css">
+    <link rel="stylesheet" type="text/css" href="./css/CombatScreen.css">
+    <link rel="stylesheet" type="text/css" href="./css/MapScreen.css">
+    <link rel="stylesheet" type="text/css" href="./css/Navegador.css">
+    <link rel="stylesheet" type="text/css" href="./css/Personajes.css">
   </head>
-  <body style="overflow: hidden">
+  <body class="App" style="overflow: hidden; margin: 0px">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -22,11 +27,7 @@
     import React from 'react';
     import ReactDOM from 'react-dom';
     import App from './App';
-    import * as serviceWorker from './serviceWorker';
-    import {AppContainer} from 'react-hot-loader';
 
-    ReactDOM.render(<AppContainer><App /></AppContainer>, document.getElementById('root'));
-
-    serviceWorker.unregister();
+    ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </html>

@@ -1,6 +1,5 @@
 import React from 'react';
 import ShareableWindow from '../../ShareableWindow';
-import '../../../App.css';
 import { capitalizeWord, renderIframe } from '../../../utils/Utils';
 
 export default class Npcs extends React.Component {
@@ -16,8 +15,8 @@ export default class Npcs extends React.Component {
         <div className="fill">
           <div className="listBoxing">
             {this.props.actualTreePath.extData
-              ? this.props.actualTreePath.extData.npcs.map((npcTitle) => 
-              <div className="yellowish contentTitleBox hoverPoint">
+              ? this.props.actualTreePath.extData.npcs.map((npcTitle, index) => 
+              <div key={"npc" + npcTitle + index} className="yellowish contentTitleBox hoverPoint">
                 <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetallesNPC(npcTitle)}>
                   {capitalizeWord(npcTitle)}
                 </div>

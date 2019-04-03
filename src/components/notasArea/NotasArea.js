@@ -1,6 +1,5 @@
 import React from 'react';
 import ShareableWindow from '../ShareableWindow';
-import '../../App.css';
 import { capitalizeWord, renderIframe } from '../../utils/Utils';
 
 export default class NotasArea extends React.Component {

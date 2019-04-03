@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../App.css';
 
 export default class LogWindow extends React.Component {
 
@@ -52,9 +51,9 @@ export default class LogWindow extends React.Component {
     return (
       <div className="fill relative">
         <div id="messagesContainer" className="messagesContainer">
-            {this.props.messages.map((message)=> {
+            {this.props.messages.map((message, index)=> {
                 return (
-                <span className="loggerMessage">
+                <span key={"sms" + message.dateTime + index} className="loggerMessage">
                     [{message.dateTime}]: {message.text}
                     <br/>
                 </span>

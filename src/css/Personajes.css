@@ -27,18 +27,6 @@
     border-radius: 8px;
 }
 
-.relative {
-    position: relative;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex1 {
-    flex: 1;
-}
-
 .backgroundFuse {
     background-blend-mode: overlay;
 }

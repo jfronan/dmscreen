@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../App.css';
-import './CombatScreen.css';
 import Window from '../Window';
 import Personajes from './personajes/PersonajesContainer';
 

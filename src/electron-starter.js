@@ -1,7 +1,5 @@
 // Modules to control application life and create native browser window 
 import { app, BrowserWindow } from 'electron';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
-import { enableLiveReload } from 'electron-compile';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -22,10 +20,8 @@ function createWindow () {
     } 
   }) 
 
-  const startUrl = process.env.ELECTRON_START_URL || `file://${__dirname}/index.html`
-
   // and load the index.html of the app. 
-  mainWindow.loadURL(startUrl) 
+  mainWindow.loadURL(`file://${__dirname}/index.html`) 
 
   // Open the DevTools. 
   // mainWindow.webContents.openDevTools() 

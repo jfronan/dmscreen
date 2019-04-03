@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../App.css';
-import './MapScreen.css';
 import Window from '../Window';
 import Navegador from './navegador/NavegadorContainer';
 import NPCs from './npcs/NpcsContainer';
@@ -26,7 +24,7 @@ export default class MapScreen extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <div id="npc" className="windowContainer npcWindow">
           <Window title="NPCs">
             <NPCs/>

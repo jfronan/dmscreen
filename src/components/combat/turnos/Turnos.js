@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../../App.css';
-import './Turnos.css';
 import { capitalizeWord } from '../../../utils/Utils';
 
 export default class Turnos extends React.Component {

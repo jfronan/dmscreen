@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../../App.css';
-import './Personajes.css';
 import { capitalizeWord } from '../../../utils/Utils';
 
 export default class Personajes extends React.Component {

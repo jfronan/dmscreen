@@ -1,8 +1,4 @@
 import React from 'react';
-import '../App.css';
-import mapPage from "../assets/mapPage.png";
-import combatPage from "../assets/combatPage.png";
-import settingsIcon from "../assets/settingsIcon.png";
 
 import MapScreen from "./map/MapScreenContainer";
 import CombatScreen from "./combat/CombatScreenContainer";
@@ -48,12 +44,12 @@ export default class MainScreen extends React.Component {
         <div className="opcionesBox">
           <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton clickFeedback yellowish">
             {this.props.modoCombate
-            ? <img src={mapPage} className="roundImages" alt="Go to Map" title="Go to Map"/>
-            : <img src={combatPage} className="roundImages" alt="Go to Combat" title="Go to Combat"/>
+            ? <img src={"./assets/mapPage.png"} className="roundImages" alt="Go to Map" title="Go to Map"/>
+            : <img src={"./assets/combatPage.png"} className="roundImages" alt="Go to Combat" title="Go to Combat"/>
             }
           </div>
           <div id="opciones" className="button opcionesButton clickFeedback greyish">
-            <img src={settingsIcon} className="roundImages" alt="Opciones"/>
+            <img src={"./assets/settingsIcon.png"} className="roundImages" alt="Opciones"/>
           </div>
         </div>
 

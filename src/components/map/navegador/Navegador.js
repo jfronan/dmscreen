@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../../App.css';
-import './Navegador.css';
 import { capitalizeWord } from '../../../utils/Utils';
 
 export default class Navegador extends React.Component {
@@ -26,7 +24,7 @@ export default class Navegador extends React.Component {
         <div id="subLocsContainer" className="subLocContainer scroll">
         {this.props.actualTreePath.subLocs
             ? this.props.actualTreePath.subLocs.map((subLoc, index) => 
-                <div className="subLocBox hoverPoint" onClick={()=> {this.props.goToSubLoc(index)}}>
+                <div key={"locacion" + subLoc.name + index} className="subLocBox hoverPoint" onClick={()=> {this.props.goToSubLoc(index)}}>
                     <div className="subLocTitle">→ {capitalizeWord(subLoc.name)}</div>
                 </div>
             )
