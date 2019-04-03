@@ -15,7 +15,9 @@
         ],
         "plugins": [
           "transform-async-to-generator",
-          "transform-object-rest-spread"
+          "transform-object-rest-spread",
+          "transform-es2015-classes",
+          "react-hot-loader/babel"
         ],
         "sourceMaps": "inline"
       }
@@ -31,11 +33,13 @@
               }
             }
           ],
-          "react"
+          "react",
+          "babel-plugin-react-css-modules"
         ],
         "plugins": [
           "transform-async-to-generator",
-          "transform-object-rest-spread"
+          "transform-object-rest-spread",
+          "transform-es2015-classes"
         ],
         "sourceMaps": "none"
       }
