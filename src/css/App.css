@@ -17,6 +17,10 @@
   display: none;
 }
 
+.blur {
+  filter: blur(7px);
+}
+
 .button {
   display: flex;
   align-items: center;

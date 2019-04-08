@@ -19,7 +19,8 @@
     "start": "electron-forge start",
     "electron": "electron .",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "fastMake": "electron-forge make --skip-package"
   },
   "config": {
     "forge": {
@@ -40,7 +41,10 @@
         "icon": "src/favicon.ico"
       },
       "electronWinstallerConfig": {
-        "name": "dmscreen"
+        "name": "dmscreen",
+        "setupIcon": "src/favicon.ico",
+        "setupMsi": "DMscreen.msi",
+        "noMsi": false
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -49,7 +53,7 @@
         "name": ""
       },
       "windowsStoreConfig": {
-        "packageName": "",
+        "packageName": "DM Screen",
         "name": "dmscreen"
       }
     }

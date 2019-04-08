@@ -29,3 +29,7 @@ export const renderIframe = (url, classes)=> {
     <iframe id="myFrame" className={classes} src={url} onLoad={(frameRef)=> frameLoad(frameRef)} seamless/>
   )
 }
+
+export const isImageString = (fileName)=> {
+    return (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".svg") || fileName.endsWith(".gif"))
+};

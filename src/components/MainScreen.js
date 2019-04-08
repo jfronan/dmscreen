@@ -8,7 +8,7 @@ import LogWindow from "./logger/LogWindowContainer";
 import NotasArea from './notasArea/NotasAreaContainer';
 import Notas from './notas/NotasContainer';
 
-import { SERVER } from '../Constants';
+import {storeLogs} from '../dataMiddleware';
 
 export default class MainScreen extends React.Component {
 
@@ -23,13 +23,7 @@ export default class MainScreen extends React.Component {
         logs: this.props.logs
       };
       ev.preventDefault();
-      fetch(SERVER + "cerrarApp", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-      })
+      storeLogs(data);
     });
   }
 
@@ -38,6 +32,7 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
+    console.log(this.props.mapaImg);
     return (
       <div className="App">
         <ModalZoom/>
@@ -54,9 +49,11 @@ export default class MainScreen extends React.Component {
         </div>
 
         <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App colorMapa'}>
+          <img src={this.props.mapaImg} alt="" className="App blur"/>
           <MapScreen/>
         </div>
         <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>
+          <img src={this.props.mapaImg} alt="" className="App blur"/>
           <CombatScreen/>
         </div>
 

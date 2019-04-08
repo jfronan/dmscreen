@@ -8,7 +8,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 // Keep a global reference of the window object, if you don't, the window will 
 // be closed automatically when the JavaScript object is garbage collected. 
-let mainWindow 
+let mainWindow
+let splash
 
 function createWindow () { 
   // Create the browser window. 
@@ -17,7 +18,8 @@ function createWindow () {
     height: 900, 
     webPreferences: { 
       nodeIntegration: true 
-    } 
+    },
+    show: false
   }) 
 
   // and load the index.html of the app. 
@@ -38,7 +40,19 @@ function createWindow () {
 // This method will be called when Electron has finished 
 // initialization and is ready to create browser windows. 
 // Some APIs can only be used after this event occurs. 
-app.on('ready', createWindow) 
+
+app.on('ready', () => {
+  createWindow();
+  // create a new `splash`-Window 
+  splash = new BrowserWindow({width: 810, height: 610, transparent: true, frame: false, alwaysOnTop: true});
+  splash.loadURL(`file://${__dirname}/splash.html`);
+  
+  // if main window is ready to show, then destroy the splash window and show up the main window
+  mainWindow.once('ready-to-show', () => {
+    splash.destroy();
+    mainWindow.show();
+  });
+});
 
 // Quit when all windows are closed. 
 app.on('window-all-closed', function () { 

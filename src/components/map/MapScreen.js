@@ -36,7 +36,7 @@ export default class MapScreen extends React.Component {
           </Window>
         </div>
 
-        <div id="mapArea" className="colorMapa flex cartografoBox cartografoContainer">
+        <div id="mapArea" className="flex cartografoBox cartografoContainer">
           <img src={this.imagenAMostrar()}
             alt='No se encuentra imagen'
             className="mapImage hoverPoint"

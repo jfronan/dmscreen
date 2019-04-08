@@ -1,4 +1,4 @@
-import { SERVER } from '../Constants'
+import {retrieveLogs} from '../dataMiddleware';
 
 export const alternarCombateMapa = () => {
   return {
@@ -65,14 +65,10 @@ export const enviarMensaje = (mensaje)=> {
 
 export const traerLogsGuardados = ()=> {
   return async (dispatch) => {
-    fetch(SERVER + "logsRetriever")
-    .then((response)=> response.json())
-    .then((logs)=> {
-      dispatch ({
-        type: 'CARGAR_LOGS_SUCCESS',
-        payload: logs
-      });
-    })
+    dispatch ({
+      type: 'CARGAR_LOGS_SUCCESS',
+      payload: retrieveLogs()
+    });
   };
 }
 

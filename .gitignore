@@ -10,11 +10,8 @@
 /coverage
 
 # production
-/build
-/dev/front/index.html
-/dev/front/index.js
-/dev/data/saveData/*
-!/dev/data/saveData/Readme.txt
+/data/saveData/*
+!/data/saveData/Readme.txt
 /out
 
 # misc

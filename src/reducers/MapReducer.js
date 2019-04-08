@@ -1,4 +1,4 @@
-import { LOCATIONS, PERSONAJES } from '../Constants';
+import { PERSONAJES, DATADIR } from '../Constants';
 
 const initialState = {
     arbol: {
@@ -12,9 +12,9 @@ const initialState = {
         subLocs: []
       },
     actualTreePath: {},
-    actualPath: LOCATIONS + '/world',
-    mapa: LOCATIONS + '/world/World.jpeg',
-    locDesc: LOCATIONS + '/world/info.html',
+    actualPath: '',
+    mapa: '',
+    locDesc: '',
     detalleNPC: '',
     mostrandoDatosNPC: false
   };
@@ -26,9 +26,9 @@ const mapReducer = (state = initialState, action) => {
         ...state,
         arbol: action.payload,
         actualTreePath: action.payload,
-        mapa: LOCATIONS + action.payload.imageRoute,
-        actualPath: LOCATIONS + '/' + action.payload.name,
-        locDesc: LOCATIONS + '/' + action.payload.name + '/info.html'
+        mapa: DATADIR + action.payload.imageRoute,
+        actualPath: DATADIR + '/' + action.payload.name,
+        locDesc: DATADIR + '/' + action.payload.name + '/info.html'
       };
 
     case 'VOLVER_LOCACION_PADRE':
@@ -55,7 +55,7 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         actualTreePath: parentRef(),
-        mapa: parentRef.imageRoute !== '' ? LOCATIONS + parentRef().imageRoute : state.mapa,
+        mapa: parentRef.imageRoute !== '' ? DATADIR + parentRef().imageRoute : state.mapa,
         actualPath: parentPath,
         locDesc: parentPath + '/info.html',
         nombreDetalleNPC: '',
@@ -67,7 +67,7 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         actualTreePath: subLoc,
-        mapa: subLoc.imageRoute !== '' ? LOCATIONS + subLoc.imageRoute : state.mapa,
+        mapa: subLoc.imageRoute !== '' ? DATADIR + subLoc.imageRoute : state.mapa,
         actualPath: state.actualPath + '/' + subLoc.name,
         locDesc: state.actualPath + '/' + subLoc.name + '/info.html',
         nombreDetalleNPC: '',

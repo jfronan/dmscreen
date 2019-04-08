@@ -1,14 +1,10 @@
-import { SERVER } from '../Constants'
+import {createCharList} from '../dataMiddleware';
 
 export const cargarPersonajes = ()=> {
     return async (dispatch) => {
-      fetch(SERVER + "personajesList")
-      .then((response)=> response.json())
-      .then((list)=> {
-        dispatch ({
-          type: 'CARGAR_PERSONAJES_SUCCESS',
-          payload: list
-        });
-      })
+      dispatch ({
+        type: 'CARGAR_PERSONAJES_SUCCESS',
+        payload: createCharList()
+      });
     };
 }

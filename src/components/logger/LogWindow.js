@@ -15,7 +15,7 @@ export default class LogWindow extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.traerLogsGuardados();
+    this.props.traerLogsGuardados();
   }
 
   componentDidUpdate(prevProps) {

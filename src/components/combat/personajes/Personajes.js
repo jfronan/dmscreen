@@ -11,7 +11,7 @@ export default class Personajes extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.cargarPersonajes();
+    this.props.cargarPersonajes();
   }
 
   render() {
