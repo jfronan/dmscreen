@@ -43,8 +43,7 @@
       "electronWinstallerConfig": {
         "name": "dmscreen",
         "setupIcon": "src/favicon.ico",
-        "setupMsi": "DMscreen.msi",
-        "noMsi": false
+        "loadingGif": "src/installLogo.gif"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
