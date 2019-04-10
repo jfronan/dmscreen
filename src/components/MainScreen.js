@@ -32,7 +32,6 @@ export default class MainScreen extends React.Component {
   }
 
   render() {
-    console.log(this.props.mapaImg);
     return (
       <div className="App">
         <ModalZoom/>

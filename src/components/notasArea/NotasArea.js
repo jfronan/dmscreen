@@ -17,7 +17,7 @@ export default class NotasArea extends React.Component {
         </div>
         <div className="listBoxing">
           <ShareableWindow titulo={capitalizeWord(this.props.actualTreePath.name)} color="springreen">
-            {renderIframe(template, "fill")}
+            {renderIframe(template, "fill listBoxing")}
           </ShareableWindow>
         </div>
       </div>

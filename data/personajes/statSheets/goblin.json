@@ -1,4 +1,6 @@
 {
     "nombre": "Goblin",
-    "raza": "goblinoid"
+    "raza": "goblinoid",
+    "sheet": "goblin.png",
+    "rating": 0.25
 }

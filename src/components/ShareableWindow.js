@@ -19,7 +19,7 @@ class ShareableWindow extends React.Component {
   
     render() {
       return (
-        <div className="fill flex">
+        <div className="fill">
           <div
             className="botonAnotar hoverPoint clickFeedback"
             onClick={()=>this.props.anotar(this.props.titulo, this.props.color, this.content())}>

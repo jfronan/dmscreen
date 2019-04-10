@@ -1,5 +1,7 @@
 import React from 'react';
 import { capitalizeWord } from '../../../utils/Utils';
+import {PERSONAJES} from '../../../Constants';
+import ShareableWindow from '../../ShareableWindow';
 
 export default class Personajes extends React.Component {
 
@@ -7,14 +9,51 @@ export default class Personajes extends React.Component {
     super();
     this.state = {
         pageShowing: 'bestiary'
-    }
+    };
+    this.renderMonstruo = this.renderMonstruo.bind(this);
+    this.renderPersonaje = this.renderPersonaje.bind(this);
   }
 
   componentDidMount() {
     this.props.cargarPersonajes();
   }
 
+  renderMonstruo(sheetName) {
+      console.log(PERSONAJES + '/statSheets/' + sheetName);
+    return (
+        <img src={PERSONAJES + '/statSheets/' + sheetName}
+        alt='No se encuentra imagen'
+        className="mapImage"
+        align="middle"
+        />
+    )
+  }
+  renderPersonaje(pjJson) {
+    return (
+        <div>En construc</div>
+    )
+  }
+
   render() {
+    if (this.props.mostrarSeleccion) {
+        return (
+            <div id="detallesContainer" className="flex fill relative">
+                <div className={this.props.datosSeleccion.color + " contentTitleBox"}>
+                    <div className="navegacionBackButton contentTitleBoxTitle hoverPoint clickFeedback"
+                    onClick={()=> {this.props.ocultarDetalles()}}>
+                        ⬑
+                    </div>
+                    <div className="contentTitleBoxTitle">{this.props.datosSeleccion.entidad.nombre}</div>
+                </div>
+                <div className="listBoxing">
+                    <ShareableWindow titulo={this.props.datosSeleccion.entidad.nombre} color={this.props.datosSeleccion.color}>
+                        {this.props.datosSeleccion.entidad.sheet ? this.renderMonstruo(this.props.datosSeleccion.entidad.sheet) : this.renderPersonaje(this.props.datosSeleccion.entidad)}
+                    </ShareableWindow>
+                </div>
+            </div>
+        )
+    }
+
     return (
       <div id="personajesContainer" className="flex fill">
         <div id="buttonRow" className="buttonRow">
@@ -30,7 +69,7 @@ export default class Personajes extends React.Component {
                     <div className="fill">
                         <div className="messagesContainer personajesListContainer backgroundFuse">
                             {this.props.bestiario.map((monstruo, index)=> 
-                                <div className="redish contentTitleBox hoverPoint">
+                                <div key={'monstruoList' + monstruo.nombre + index} className="redish contentTitleBox hoverPoint">
                                     <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(monstruo, "redish")}>
                                         {monstruo.nombre}
                                     </div>
@@ -51,7 +90,7 @@ export default class Personajes extends React.Component {
                     <div className="fill">
                         <div className="listBoxing personajesListContainer">
                             {this.props.pcs.map((personaje, index)=> 
-                                <div className="greenish contentTitleBox hoverPoint">
+                                <div key={'monstruoList' + personaje.nombre + index} className="greenish contentTitleBox hoverPoint">
                                     <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(personaje, "greenish")}>
                                         {personaje.nombre}
                                     </div>

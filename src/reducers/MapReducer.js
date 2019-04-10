@@ -39,12 +39,12 @@ const mapReducer = (state = initialState, action) => {
       const parentPath = state.actualPath.substring(0, lastLocationPos)
       var parentRef = ()=> {
         var pathFragments = parentPath.split('/');
-        if (pathFragments.length < 5) {
+        if (pathFragments.length < 4) {
           return state.arbol;
         }
         var pointerConstruct = state.arbol;
         /* eslint no-loop-func: 0 */
-        for (var i=4; i < pathFragments.length; i++) {
+        for (var i=3; i < pathFragments.length; i++) {
           pointerConstruct = pointerConstruct.subLocs.find(loc => {
             return loc.name === pathFragments[i];
           });

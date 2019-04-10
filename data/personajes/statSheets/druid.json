@@ -1,4 +1,6 @@
 {
     "nombre": "Druid",
-    "raza": "human"
+    "raza": "human",
+    "sheet": "druid.png",
+    "rating": 2
 }

@@ -54,7 +54,12 @@ export const createCharList = () => {
     var monster = fs.readdirSync(rutaSheets)
     for (var j=0; j < monster.length; j++) {
         let file = rutaSheets + '/' + monster[j];
-        listaPersonajes.bestiary = listaPersonajes.bestiary.concat(require(file));
+        if (file.endsWith('.json')) {
+            var fileJson = require(file);
+            if (fileJson.sheet && fileJson.sheet !== null && fileJson.sheet !== '') {
+                listaPersonajes.bestiary = listaPersonajes.bestiary.concat(fileJson);
+            }
+        }
     }
     
     console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
