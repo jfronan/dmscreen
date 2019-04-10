@@ -1,20 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as mainActions from '../actions/MainScreenAction';
+import { renderIframe } from '../utils/Utils';
+import {PERSONAJES} from '../Constants';
 
 class ShareableWindow extends React.Component {
 
     constructor(props) {
       super();
-      this.content = this.content.bind(this);
+      this.renderContent = this.renderContent.bind(this);
     }
-  
-    content() {
-      return (
-        <div className="listBoxing shareableContentBoxing">
-          {this.props.children}
-        </div>
-      )
+
+    renderContent() {
+      switch (this.props.renderData.type) {
+        case 'iframe':
+        return (
+          renderIframe(this.props.renderData.data, "fill listBoxing")
+        )
+        case 'img':
+        return (
+          <img src={PERSONAJES + '/statSheets/' + this.props.renderData.data}
+          alt='No se encuentra imagen'
+          className="mapImage"
+          align="middle"
+          />
+        )
+        case 'json':
+        return (
+            <div>En construc</div>
+        )
+
+        default: return null;
+      }
     }
   
     render() {
@@ -22,11 +39,11 @@ class ShareableWindow extends React.Component {
         <div className="fill">
           <div
             className="botonAnotar hoverPoint clickFeedback"
-            onClick={()=>this.props.anotar(this.props.titulo, this.props.color, this.content())}>
+            onClick={()=>this.props.anotar(this.props.titulo, this.props.color, this.props.renderData)}>
                 &#128214;
           </div>
           <div id="windowChildrenContainer" className="listBoxing shareableContentBoxing">
-              {this.props.children}
+            {this.renderContent()}
           </div>
         </div>
       );

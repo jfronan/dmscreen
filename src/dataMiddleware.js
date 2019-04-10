@@ -72,12 +72,23 @@ export const createCharList = () => {
 export const storeLogs = (logs) => {
     fs.writeFileSync(SAVEDATA + "/logs.json", JSON.stringify(logs));
 }
-
 export const retrieveLogs = () => {
     try {
         var logs = require(SAVEDATA + "/logs.json").logs
         return {logs: logs}
     } catch (e) {
         return {logs: []}
+    }
+}
+
+export const storeNotes = (notes) => {
+    fs.writeFileSync(SAVEDATA + "/notes.json", JSON.stringify(notes));
+}
+export const retrieveNotes = () => {
+    try {
+        var notes = require(SAVEDATA + "/notes.json").notes
+        return {notes: notes}
+    } catch (e) {
+        return {notes: []}
     }
 }

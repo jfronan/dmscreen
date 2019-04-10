@@ -6,6 +6,7 @@ const mapStateToProps = state => {
   return {
     modoCombate: state.main.modoCombate,
     logs: state.main.mensajesLogger,
+    notes: state.main.contenidoNotas,
     mapaImg: state.map.mapa
   };
 };

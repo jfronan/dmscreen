@@ -69,6 +69,11 @@ const mainReducer = (state = initialState, action) => {
       ...state,
       mensajesLogger: action.payload.logs
     }
+    case 'CARGAR_NOTES_SUCCESS':
+    return {
+      ...state,
+      contenidoNotas: action.payload.notes
+    }
 
     default: return state;
   }

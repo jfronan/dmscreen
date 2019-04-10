@@ -10,28 +10,10 @@ export default class Personajes extends React.Component {
     this.state = {
         pageShowing: 'bestiary'
     };
-    this.renderMonstruo = this.renderMonstruo.bind(this);
-    this.renderPersonaje = this.renderPersonaje.bind(this);
   }
 
   componentDidMount() {
     this.props.cargarPersonajes();
-  }
-
-  renderMonstruo(sheetName) {
-      console.log(PERSONAJES + '/statSheets/' + sheetName);
-    return (
-        <img src={PERSONAJES + '/statSheets/' + sheetName}
-        alt='No se encuentra imagen'
-        className="mapImage"
-        align="middle"
-        />
-    )
-  }
-  renderPersonaje(pjJson) {
-    return (
-        <div>En construc</div>
-    )
   }
 
   render() {
@@ -46,9 +28,13 @@ export default class Personajes extends React.Component {
                     <div className="contentTitleBoxTitle">{this.props.datosSeleccion.entidad.nombre}</div>
                 </div>
                 <div className="listBoxing">
-                    <ShareableWindow titulo={this.props.datosSeleccion.entidad.nombre} color={this.props.datosSeleccion.color}>
-                        {this.props.datosSeleccion.entidad.sheet ? this.renderMonstruo(this.props.datosSeleccion.entidad.sheet) : this.renderPersonaje(this.props.datosSeleccion.entidad)}
-                    </ShareableWindow>
+                    <ShareableWindow
+                        titulo={this.props.datosSeleccion.entidad.nombre}
+                        color={this.props.datosSeleccion.color}
+                        renderData={this.props.datosSeleccion.entidad.sheet
+                            ? {data: this.props.datosSeleccion.entidad.sheet, type: "img"}
+                            : {data: this.props.datosSeleccion.entidad, type: "json"}}
+                    />
                 </div>
             </div>
         )

@@ -1,10 +1,40 @@
 import React from 'react';
 import { capitalizeWord } from '../../utils/Utils';
+import { renderIframe } from '../../utils/Utils';
+import {PERSONAJES} from '../../Constants';
 
 export default class Notas extends React.Component {
 
   constructor(props) {
     super();
+    this.renderContent = this.renderContent.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.traerNotasGuardadas();
+  }
+
+  renderContent(renderData) {
+    switch (renderData.type) {
+      case 'iframe':
+      return (
+        renderIframe(renderData.data, "fill listBoxing")
+      )
+      case 'img':
+      return (
+        <img src={PERSONAJES + '/statSheets/' + renderData.data}
+        alt='No se encuentra imagen'
+        className="mapImage"
+        align="middle"
+        />
+      )
+      case 'json':
+      return (
+          <div>En construc</div>
+      )
+
+      default: return null;
+    }
   }
 
   render() {
@@ -36,7 +66,9 @@ export default class Notas extends React.Component {
             </div>
             <div className="contentTitleBoxTitle">{capitalizeWord(this.props.contenidoNotas[this.props.mostrandoNota].titulo)}</div>
         </div>
-        {this.props.contenidoNotas[this.props.mostrandoNota].content}
+        <div className="listBoxing shareableContentBoxing">
+          {this.renderContent(this.props.contenidoNotas[this.props.mostrandoNota].content)}
+        </div>
       </div>
     );
   }

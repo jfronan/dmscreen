@@ -1,4 +1,4 @@
-import {retrieveLogs} from '../dataMiddleware';
+import {retrieveLogs, retrieveNotes} from '../dataMiddleware';
 
 export const alternarCombateMapa = () => {
   return {
@@ -71,6 +71,16 @@ export const traerLogsGuardados = ()=> {
     });
   };
 }
+
+export const traerNotasGuardadas = ()=> {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'CARGAR_NOTES_SUCCESS',
+      payload: retrieveNotes()
+    });
+  };
+}
+
 
   /*
 export const getEjecutivosFailure = (payload) => {

@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => {
     mostrarNota: (index) => dispatch(mainActions.mostrarNota(index)),
     ocultarNota: () => dispatch(mainActions.ocultarNota()),
     anotar: (titulo, color, content) => dispatch(mainActions.anotar(titulo, color, content)),
-    eliminarNota: (index) => dispatch(mainActions.eliminarNota(index))
+    eliminarNota: (index) => dispatch(mainActions.eliminarNota(index)),
+    traerNotasGuardadas: () => dispatch(mainActions.traerNotasGuardadas())
   };
 };
 

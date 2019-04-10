@@ -8,7 +8,7 @@ import LogWindow from "./logger/LogWindowContainer";
 import NotasArea from './notasArea/NotasAreaContainer';
 import Notas from './notas/NotasContainer';
 
-import {storeLogs} from '../dataMiddleware';
+import {storeLogs, storeNotes} from '../dataMiddleware';
 
 export default class MainScreen extends React.Component {
 
@@ -22,8 +22,12 @@ export default class MainScreen extends React.Component {
       var data = {
         logs: this.props.logs
       };
+      var notasAGuardar = {
+        notes: this.props.notes
+      }
       ev.preventDefault();
       storeLogs(data);
+      storeNotes(notasAGuardar);
     });
   }
 

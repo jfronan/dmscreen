@@ -38,9 +38,7 @@ export default class Npcs extends React.Component {
             <div className="contentTitleBoxTitle">{capitalizeWord(this.props.nombreDetalleNPC)}</div>
           </div>
           <div className="listBoxing">
-            <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)} color="yellowish">
-                {renderIframe(this.props.urlDetallesNPC, "fill listBoxing")}
-            </ShareableWindow>
+            <ShareableWindow titulo={capitalizeWord(this.props.nombreDetalleNPC)} color="yellowish" renderData={{data: this.props.urlDetallesNPC, type: "iframe"}}/>
           </div>
         </div>
       );
