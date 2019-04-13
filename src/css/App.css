@@ -21,6 +21,23 @@
   filter: blur(7px);
 }
 
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.spaced {
+  justify-content: space-between;
+}
+
+.spaceAround {
+  justify-content: space-around;
+}
+
+.bold {
+  font-weight: 600;
+}
+
 .button {
   display: flex;
   align-items: center;

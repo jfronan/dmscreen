@@ -11,6 +11,39 @@ export const capitalizeWord = (stringBase)=> {
     }
 }
 
+export const capitalizeEveryWord = (stringBase)=> {
+    try {
+        var stringFinal = "";
+        var stringFragments = stringBase.split(" ");
+        for (let i = 0; i < stringFragments.length; i++) {
+            if (i < (stringFragments.length - 1)) {
+                stringFinal = stringFinal + capitalizeWord(stringFragments[i]) + " ";
+            } else {
+                stringFinal = stringFinal + capitalizeWord(stringFragments[i]);
+            }
+        };
+        return stringFinal;
+    } catch (error) {
+        if (typeof stringBase === 'string') {
+            console.log(error);
+        }
+        return capitalizeWord(stringBase);
+    }
+}
+
+export const addPlusIfPositive = (number)=> {
+    try {
+        if (number >= 0) {
+            return ("+" + number);
+        }
+        else {
+            return number;
+        }
+    } catch (error) {
+        return number;
+    }
+}
+
 export const renderIframe = (url, classes)=> {
   var frameLoad = (frameRef)=> {
     var frame = frameRef.target;

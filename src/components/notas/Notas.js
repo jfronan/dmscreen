@@ -2,6 +2,7 @@ import React from 'react';
 import { capitalizeWord } from '../../utils/Utils';
 import { renderIframe } from '../../utils/Utils';
 import {PERSONAJES} from '../../Constants';
+import PcCard from '../combat/personajes/PcCard';
 
 export default class Notas extends React.Component {
 
@@ -30,7 +31,7 @@ export default class Notas extends React.Component {
       )
       case 'json':
       return (
-          <div>En construc</div>
+        <PcCard data={renderData.data}/>
       )
 
       default: return null;

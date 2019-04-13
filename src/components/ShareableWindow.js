@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as mainActions from '../actions/MainScreenAction';
 import { renderIframe } from '../utils/Utils';
 import {PERSONAJES} from '../Constants';
+import PcCard from './combat/personajes/PcCard';
 
 class ShareableWindow extends React.Component {
 
@@ -27,7 +28,7 @@ class ShareableWindow extends React.Component {
         )
         case 'json':
         return (
-            <div>En construc</div>
+          <PcCard data={this.props.renderData.data}/>
         )
 
         default: return null;
