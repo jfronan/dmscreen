@@ -1,3 +1,4 @@
 {
-    "npcs": ["arbiter", "missigno", "tester", "voidling"]
+    "npcs": ["arbiter", "missigno", "tester", "voidling"],
+    "monsters": ["Goblin", "Bugbear", "Kobold", "Swarm of Rats", "Druid"]
 }

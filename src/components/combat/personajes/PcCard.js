@@ -10,13 +10,17 @@ export default class PcCard extends React.Component {
 
   additionalProfScore(skill) {
     var data = this.props.data;
-    if (data.expertise.includes(skill)) {
-    return 4;
+    try {
+        if (data.expertise.includes(skill)) {
+            return 4;
+        }
+        if (data.proficiencies.includes(skill)) {
+            return 2;
+        }
+        return 0;
+    } catch (e) {
+        return 0;
     }
-    if (data.proficiencies.includes(skill)) {
-    return 2;
-    }
-    return 0;
   }
 
   render() {
@@ -25,11 +29,13 @@ export default class PcCard extends React.Component {
       <div id="pcContainer" className="flexRow fill">
         <div className="flex1">
             <div id="PCclaseLvl">
-                {data.clases.map((clase)=>
+                {data.clases 
+                    ? data.clases.map((clase)=>
                     <div>
                         {capitalizeWord(clase.class) + " " + clase.level}
-                    </div>
-                )}
+                    </div>)
+                    : null
+                }
             </div>
             <div className="flexRow spaced">
                 <div id="PCbackground">
@@ -74,11 +80,13 @@ export default class PcCard extends React.Component {
             </div>
             <div id="PChit-dice">
                 <div>Hit Dice</div>
-                {data.maxHitDice.map((dice)=>
+                {data.maxHitDice
+                    ? data.maxHitDice.map((dice)=>
                     <div>
                         {dice[Object.keys(dice)[0]] + "d" + Object.keys(dice)[0]}
-                    </div>
-                )}
+                    </div>)
+                    :null
+                }
             </div>
             <div id="PCstrength" className="bold">
                 <div style={{"border-bottom": "solid 1px black"}}>Strength</div>
@@ -423,7 +431,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             
-            {data.resistances.length > 0
+            {(data.resistance && data.resistances.length > 0)
                 ? <div id="PCresistances" className="backSilver">
                     <div style={{"border-bottom": "solid 1px black", "text-align": "center"}}>Resistances</div>
                     <div className="flexRow spaceAround">
@@ -434,7 +442,7 @@ export default class PcCard extends React.Component {
                 </div>
                 : null
             }
-            {data.immunities.length > 0
+            {(data.immunities && data.immunities.length > 0)
                 ? <div id="PCimmunities" className="backGold">
                     <div style={{"border-bottom": "solid 1px black", "text-align": "center"}}>Immunities</div>
                     <div className="flexRow spaceAround">

@@ -7,7 +7,8 @@ const mapStateToProps = state => {
     pcs: state.combat.listaPersonajes,
     bestiario: state.combat.bestiario,
     mostrarSeleccion: state.combat.mostrandoFichaPJ,
-    datosSeleccion: state.combat.fichaPJStats
+    datosSeleccion: state.combat.fichaPJStats,
+    areaActual: state.map.actualTreePath
   };
 };
 

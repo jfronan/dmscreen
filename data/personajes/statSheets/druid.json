@@ -2,5 +2,6 @@
     "nombre": "Druid",
     "raza": "human",
     "sheet": "druid.png",
+    "spells": ["Druidcraft", "Produce Flame", "Shillelagh", "Entangle", "Longstrider", "Speak with Animasl", "Thunderwave", "Animal Messenger", "Barkskin"],
     "rating": 2
 }

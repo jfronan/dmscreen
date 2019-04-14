@@ -1,6 +1,4 @@
 import React from 'react';
-import { capitalizeWord } from '../../../utils/Utils';
-import {PERSONAJES} from '../../../Constants';
 import ShareableWindow from '../../ShareableWindow';
 
 export default class Personajes extends React.Component {
@@ -8,15 +6,34 @@ export default class Personajes extends React.Component {
   constructor(props) {
     super();
     this.state = {
-        pageShowing: 'bestiary'
+        pageShowing: 'bestiary',
+        bestiarySearchValue: ""
     };
+    this.actualAreaMonsters = this.actualAreaMonsters.bind(this);
   }
 
   componentDidMount() {
     this.props.cargarPersonajes();
   }
 
+  actualAreaMonsters() {
+    try {
+        let areaActuaList = this.props.areaActual.extData.monsters;
+        let bestiario = this.props.bestiario;
+        var unifiedList = [];
+        for (let i = 0; i < areaActuaList.length; i++) {
+            let coincidence = bestiario.filter(monster => monster.nombre === areaActuaList[i]);
+            unifiedList = unifiedList.concat(coincidence);
+        }
+        return unifiedList;
+    } catch (e) {
+        return [];
+    }
+  }
+
   render() {
+    let bestiario = this.props.bestiario;
+    let filteredBestiario = bestiario.filter(monstruo => monstruo.nombre.toLowerCase().includes(this.state.bestiarySearchValue))
     if (this.props.mostrarSeleccion) {
         return (
             <div id="detallesContainer" className="flex fill relative">
@@ -54,7 +71,7 @@ export default class Personajes extends React.Component {
                 return (
                     <div className="fill">
                         <div className="messagesContainer personajesListContainer backgroundFuse">
-                            {this.props.bestiario.map((monstruo, index)=> 
+                            {filteredBestiario.map((monstruo, index)=>
                                 <div key={'monstruoList' + monstruo.nombre + index} className="redish contentTitleBox hoverPoint">
                                     <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(monstruo, "redish")}>
                                         {monstruo.nombre}
@@ -67,7 +84,13 @@ export default class Personajes extends React.Component {
                             )}
                         </div>
                         <div className="loggerInputContainer">
-                            <input id="searchBar" type="text" className="searchBar" placeholder="Buscar Monstruo"/>
+                            <input
+                                id="searchBar"
+                                type="text"
+                                className="searchBar"
+                                placeholder="Buscar Monstruo"
+                                value={this.state.bestiarySearchValue}
+                                onChange={(event)=> this.setState({bestiarySearchValue: event.target.value})}/>
                         </div>
                     </div>
                 );
@@ -86,7 +109,23 @@ export default class Personajes extends React.Component {
                     </div>
                 );
             case 'area':
-                return (<div className="fill">En construccion</div>);
+                return (
+                    <div className="fill">
+                        <div className="messagesContainer personajesListContainer backgroundFuse">
+                            {this.actualAreaMonsters().map((monstruo, index)=>
+                                <div key={'monstruoOfAreaList' + monstruo.nombre + index} className="colorMapa contentTitleBox hoverPoint">
+                                    <div className="contentTitleBoxTitle" onClick={()=> this.props.mostrarDetalles(monstruo, "redish")}>
+                                        {monstruo.nombre}
+                                    </div>
+                                    <div className="botonAmpliar hoverPoint clickFeedback yellowish"
+                                        onClick={()=>this.props.agregarAListaDeTurnos(monstruo)}>
+                                        ➜
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                );
             default:
                 return null;
             }

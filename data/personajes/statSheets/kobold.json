@@ -1,4 +1,6 @@
 {
     "nombre": "Kobold",
-    "raza": "no me acuerdo"
+    "raza": "kobold",
+    "sheet": "kobold.png",
+    "rating": 0.125
 }

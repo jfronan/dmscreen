@@ -41,69 +41,69 @@
     flex-direction: row;
     justify-content: space-around;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCbackground {
     flex: 1;
     text-align: center;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCrace {
     flex: 1;
     text-align: center;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCalignment {
     flex: 1;
     text-align: center;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCxp {
     flex: 1;
     text-align: center;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 #PCHP {
     flex: 1;
     text-align: center;
     background-color: red;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCarmor {
     flex: 1;
     text-align: center;
     background-color: lightgray;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCspeed {
     flex: 1;
     text-align: center;
     background-color: green;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 #PCproficiency {
     flex: 1;
     text-align: center;
     background-color: cadetblue;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCinitiative {
     flex: 1;
     text-align: center;
     background-color: darkolivegreen;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCpassivePerception {
     flex: 1;
     text-align: center;
     background-color: lightblue;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 #PChit-dice {
@@ -111,44 +111,44 @@
     flex-direction: row;
     justify-content: space-around;
     background-color: wheat;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 #PCstrength {
     flex: 1;
     text-align: center;
     background-color: indianred;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCdexterity {
     flex: 1;
     text-align: center;
     background-color: darkgreen;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCconstitution {
     flex: 1;
     text-align: center;
     background-color: brown;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCintelligence {
     flex: 1;
     text-align: center;
     background-color: dodgerblue;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCwisdom {
     flex: 1;
     text-align: center;
     background-color: mediumpurple;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 #PCcharisma {
     flex: 1;
     text-align: center;
     background-color: coral;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 .proficiencyBoxSignal {
@@ -159,28 +159,28 @@
 
 .strBack {
     background-color: indianred;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 .dexBack {
     background-color: darkgreen;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 .intBack {
     background-color: dodgerblue;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 .wisBack {
     background-color: mediumpurple;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 .chaBack {
     background-color: coral;
-    border: solid 1px tan;
+    border: solid 1px gainsboro;
 }
 
 .backGrey {
-    background-color: gainsboro;
-    border: solid 1px tan;
+    background-color: lavender;
+    border: solid 1px gainsboro;
 }
 .backSilver {
     background-color: silver;
