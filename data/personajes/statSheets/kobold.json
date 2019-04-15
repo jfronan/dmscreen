@@ -2,5 +2,7 @@
     "nombre": "Kobold",
     "raza": "kobold",
     "sheet": "kobold.png",
-    "rating": 0.125
+    "rating": 0.125,
+    "maxHP": 5,
+    "armor": 12
 }

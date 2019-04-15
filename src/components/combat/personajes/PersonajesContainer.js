@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     cargarPersonajes: () => dispatch(combatActions.cargarPersonajes()),
-    agregarAListaDeTurnos: ()=> {},
+    agregarAListaDeTurnos: (monstruo)=> dispatch(combatActions.agregarAListaDeTurnos(monstruo, "redish")),
     mostrarDetalles: (entidad, color)=> dispatch(combatActions.seleccionarPersonaje(entidad, color)),
     ocultarDetalles: ()=> dispatch(combatActions.ocultarDetallesPersonaje())
   };

@@ -1,19 +1,18 @@
 import Turnos from './Turnos';
 import { connect } from 'react-redux';
-import * as mapActions from '../../../actions/MapScreenAction';
+import * as combatActions from '../../../actions/CombatScreenAction';
 
 const mapStateToProps = state => {
   return {
-    arbol: state.map.arbol,
-    actualTreePath: state.map.actualTreePath
+    listaTurnos: state.combat.listaTurnosParticipantes
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    cargarArbol: () => dispatch(mapActions.cargarArbol()),
-    goBackToParent: () => dispatch(mapActions.goBackToParent()),
-    goToSubLoc: (index) => dispatch(mapActions.goToSubLoc(index))
+    modifyEntityValue: (realIndex, statKey, value) => dispatch(combatActions.modifyEntityValue(realIndex, statKey, value)),
+    removeFromList: (realIndex) => dispatch(combatActions.removeFromTurnList(realIndex)),
+    mostrarDetalles: (entidad, color)=> dispatch(combatActions.seleccionarPersonaje(entidad, color))
   };
 };
 

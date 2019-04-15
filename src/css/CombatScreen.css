@@ -18,3 +18,59 @@
   height: 47%;
   width: 20%
 }
+
+.combatantTitleBox {
+  line-height:  16px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.seamlessInput {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  outline: none;
+  max-width: 50%;
+}
+
+.initTextInput {
+  padding-left: 1px;
+  padding-right: 1px;
+  position: absolute;
+  top: 0;
+  right: 23px;
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  width: 24px;
+}
+
+.acTextInput {
+  padding-left: 1px;
+  padding-right: 1px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  width: 24px;
+}
+
+.hpTextInput {
+  padding-left: 1px;
+  padding-right: 1px;
+  position: absolute;
+  top: 0;
+  right: 77px;
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  width: 50px;
+}
+
+.sideBorder {
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+}

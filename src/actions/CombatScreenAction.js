@@ -28,3 +28,44 @@ export const ocultarDetallesPersonaje = ()=> {
     });
   };
 }
+
+export const agregarAListaDeTurnos = (entidad, color)=> {
+  return async (dispatch) => {
+    var floatingStats = {
+      actualHP: entidad.maxHP,
+      init: 0,
+      actualArmor: entidad.armor,
+      nombreAMostrar: entidad.nombre
+    };
+    dispatch ({
+      type: 'AGREGAR_ENTIDAD_A_TURNOS',
+      payload: {
+        entidad: entidad,
+        color: color,
+        floatingStats: floatingStats
+      }
+    });
+  };
+}
+
+export const removeFromTurnList = (index) => {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'REMOVER_ENTIDAD_DE_TURNOS',
+      payload: index
+    });
+  };
+}
+
+export const modifyEntityValue = (index, statKey, value) => {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'MODIFICAR_ENTIDAD_DE_TURNOS',
+      payload: {
+        index: index,
+        stat: statKey,
+        value: value
+      }
+    });
+  };
+}

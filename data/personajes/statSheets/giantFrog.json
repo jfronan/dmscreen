@@ -2,5 +2,7 @@
     "nombre": "Giant Frog",
     "raza": "beast",
     "sheet": "giant frog.png",
-    "rating": 0.25
+    "rating": 0.25,
+    "maxHP": 18,
+    "armor": 11
 }

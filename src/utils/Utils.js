@@ -66,3 +66,7 @@ export const renderIframe = (url, classes)=> {
 export const isImageString = (fileName)=> {
     return (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".svg") || fileName.endsWith(".gif"))
 };
+
+export const percent = (total, incognito)=> {
+    return (incognito*100/total);
+}

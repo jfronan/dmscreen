@@ -1,4 +1,6 @@
 {
     "nombre": "Bryna",
-    "raza": "aasimar"
+    "raza": "aasimar",
+    "maxHP": 11,
+    "armor": 18
 }

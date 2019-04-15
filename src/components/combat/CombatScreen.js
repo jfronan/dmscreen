@@ -1,6 +1,7 @@
 import React from 'react';
 import Window from '../Window';
 import Personajes from './personajes/PersonajesContainer';
+import Turnos from './turnos/TurnosContainer';
 
 export default class CombatScreen extends React.Component {
 
@@ -22,6 +23,7 @@ export default class CombatScreen extends React.Component {
         </div>
         <div id="turnos" className="windowContainer turnosWindow">
           <Window title="Turnos">
+            <Turnos/>
           </Window>
         </div>
       </div>

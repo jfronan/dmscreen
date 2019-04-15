@@ -13,6 +13,10 @@
   position: relative;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .hidden {
   display: none;
 }
@@ -359,6 +363,7 @@
 
 .clickFeedback:active {
   margin-top: 1px;
+  margin-bottom: -1px;
 }
 
 .inlineBlock {

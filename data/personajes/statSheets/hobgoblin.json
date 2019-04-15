@@ -2,5 +2,7 @@
     "nombre": "Hobgoblin",
     "raza": "goblinoid",
     "sheet": "hobgoblin.png",
-    "rating": 0.5
+    "rating": 0.5,
+    "maxHP": 11,
+    "armor": 18
 }

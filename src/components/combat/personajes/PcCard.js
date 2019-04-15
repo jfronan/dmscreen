@@ -30,8 +30,8 @@ export default class PcCard extends React.Component {
         <div className="flex1">
             <div id="PCclaseLvl">
                 {data.clases 
-                    ? data.clases.map((clase)=>
-                    <div>
+                    ? data.clases.map((clase, index)=>
+                    <div key={"clases" + clase.class + index}>
                         {capitalizeWord(clase.class) + " " + clase.level}
                     </div>)
                     : null
@@ -52,7 +52,7 @@ export default class PcCard extends React.Component {
             <div className="flexRow spaced bold">
                 <div id="PCHP">
                     <div>Max HP</div>
-                    <div>{data.maxHp}</div>
+                    <div>{data.maxHP}</div>
                 </div>
                 <div id="PCarmor">
                     <div>AC</div>
@@ -81,15 +81,15 @@ export default class PcCard extends React.Component {
             <div id="PChit-dice">
                 <div>Hit Dice</div>
                 {data.maxHitDice
-                    ? data.maxHitDice.map((dice)=>
-                    <div>
+                    ? data.maxHitDice.map((dice, index)=>
+                    <div key={"dado" + JSON.stringify(dice) + index}>
                         {dice[Object.keys(dice)[0]] + "d" + Object.keys(dice)[0]}
                     </div>)
                     :null
                 }
             </div>
             <div id="PCstrength" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Strength</div>
+                <div style={{borderBottom: "solid 1px black"}}>Strength</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -106,7 +106,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             <div id="PCdexterity" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Dexterity</div>
+                <div style={{borderBottom: "solid 1px black"}}>Dexterity</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -123,7 +123,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             <div id="PCconstitution" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Constitution</div>
+                <div style={{borderBottom: "solid 1px black"}}>Constitution</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -140,7 +140,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             <div id="PCintelligence" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Intelligence</div>
+                <div style={{borderBottom: "solid 1px black"}}>Intelligence</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -157,7 +157,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             <div id="PCwisdom" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Wisdom</div>
+                <div style={{borderBottom: "solid 1px black"}}>Wisdom</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -174,7 +174,7 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             <div id="PCcharisma" className="bold">
-                <div style={{"border-bottom": "solid 1px black"}}>Charisma</div>
+                <div style={{borderBottom: "solid 1px black"}}>Charisma</div>
                 <div className="flexRow spaceAround">
                     <div>
                         <div>Score</div>
@@ -197,11 +197,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('athletics') === 4 ? "E" : this.additionalProfScore('athletics') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Athletics (str)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.strength / 2) - 5 + this.additionalProfScore('athletics'))}
                 </div>
             </div>
@@ -211,11 +211,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('acrobatics') === 4 ? "E" : this.additionalProfScore('acrobatics') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Acrobatics (dex)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.dexterity / 2) - 5 + this.additionalProfScore('acrobatics'))}
                 </div>
             </div>
@@ -224,11 +224,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('sleightOfHand') === 4 ? "E" : this.additionalProfScore('sleightOfHand') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Sleight of Hand (dex)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.dexterity / 2) - 5 + this.additionalProfScore('sleightOfHand'))}
                 </div>
             </div>
@@ -237,11 +237,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('stealth') === 4 ? "E" : this.additionalProfScore('stealth') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Stealth (dex)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.dexterity / 2) - 5 + this.additionalProfScore('stealth'))}
                 </div>
             </div>
@@ -251,11 +251,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('arcana') === 4 ? "E" : this.additionalProfScore('arcana') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Arcana (int)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.intelligence / 2) - 5 + this.additionalProfScore('arcana'))}
                 </div>
             </div>
@@ -264,11 +264,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('history') === 4 ? "E" : this.additionalProfScore('history') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         History (int)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.intelligence / 2) - 5 + this.additionalProfScore('history'))}
                 </div>
             </div>
@@ -277,11 +277,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('investigation') === 4 ? "E" : this.additionalProfScore('investigation') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Investigation (int)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.intelligence / 2) - 5 + this.additionalProfScore('investigation'))}
                 </div>
             </div>
@@ -290,11 +290,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('nature') === 4 ? "E" : this.additionalProfScore('nature') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Nature (int)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.intelligence / 2) - 5 + this.additionalProfScore('nature'))}
                 </div>
             </div>
@@ -303,11 +303,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('religion') === 4 ? "E" : this.additionalProfScore('religion') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Religion (int)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.intelligence / 2) - 5 + this.additionalProfScore('religion'))}
                 </div>
             </div>
@@ -317,11 +317,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('animalHandling') === 4 ? "E" : this.additionalProfScore('animalHandling') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Animal Handling (wis)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.wisdom / 2) - 5 + this.additionalProfScore('animalHandling'))}
                 </div>
             </div>
@@ -330,11 +330,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('insight') === 4 ? "E" : this.additionalProfScore('insight') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Insight (wis)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.wisdom / 2) - 5 + this.additionalProfScore('insight'))}
                 </div>
             </div>
@@ -343,11 +343,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('medicine') === 4 ? "E" : this.additionalProfScore('medicine') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Medicine (wis)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.wisdom / 2) - 5 + this.additionalProfScore('medicine'))}
                 </div>
             </div>
@@ -356,11 +356,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('perception') === 4 ? "E" : this.additionalProfScore('perception') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Perception (wis)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.wisdom / 2) - 5 + this.additionalProfScore('perception'))}
                 </div>
             </div>
@@ -369,11 +369,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('survival') === 4 ? "E" : this.additionalProfScore('survival') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Survival (wis)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.wisdom / 2) - 5 + this.additionalProfScore('survival'))}
                 </div>
             </div>
@@ -383,11 +383,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('deception') === 4 ? "E" : this.additionalProfScore('deception') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Deception (cha)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.charisma / 2) - 5 + this.additionalProfScore('deception'))}
                 </div>
             </div>
@@ -396,11 +396,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('intimidation') === 4 ? "E" : this.additionalProfScore('intimidation') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Intimidation (cha)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.charisma / 2) - 5 + this.additionalProfScore('intimidation'))}
                 </div>
             </div>
@@ -409,11 +409,11 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('performance') === 4 ? "E" : this.additionalProfScore('performance') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Performance (cha)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.charisma / 2) - 5 + this.additionalProfScore('performance'))}
                 </div>
             </div>
@@ -422,21 +422,21 @@ export default class PcCard extends React.Component {
                     <div className="proficiencyBoxSignal">
                         {this.additionalProfScore('persuasion') === 4 ? "E" : this.additionalProfScore('persuasion') === 2 ? "P" : ""}
                     </div>
-                    <div style={{"padding-left": "4px"}}>
+                    <div style={{paddingLeft: "4px"}}>
                         Persuasion (cha)
                     </div>
                 </div>
-                <div style={{"padding-right": "4px"}}>
+                <div style={{paddingRight: "4px"}}>
                     {addPlusIfPositive(Math.floor(data.charisma / 2) - 5 + this.additionalProfScore('persuasion'))}
                 </div>
             </div>
             
             {(data.resistance && data.resistances.length > 0)
                 ? <div id="PCresistances" className="backSilver">
-                    <div style={{"border-bottom": "solid 1px black", "text-align": "center"}}>Resistances</div>
+                    <div style={{borderBottom: "solid 1px black", "text-align": "center"}}>Resistances</div>
                     <div className="flexRow spaceAround">
-                        {data.resistances.map((resistance)=>
-                            <div>{capitalizeEveryWord(resistance)}</div>
+                        {data.resistances.map((resistance, index)=>
+                            <div key={"resistencia" + resistance + index}>{capitalizeEveryWord(resistance)}</div>
                         )}
                     </div>
                 </div>
@@ -444,10 +444,10 @@ export default class PcCard extends React.Component {
             }
             {(data.immunities && data.immunities.length > 0)
                 ? <div id="PCimmunities" className="backGold">
-                    <div style={{"border-bottom": "solid 1px black", "text-align": "center"}}>Immunities</div>
+                    <div style={{borderBottom: "solid 1px black", "text-align": "center"}}>Immunities</div>
                     <div className="flexRow spaceAround">
-                        {data.immunities.map((immunitie)=>
-                            <div>{capitalizeEveryWord(immunitie)}</div>
+                        {data.immunities.map((immunitie, index)=>
+                            <div key={"inmunidad" + immunitie + index}>{capitalizeEveryWord(immunitie)}</div>
                         )}
                     </div>
                 </div>

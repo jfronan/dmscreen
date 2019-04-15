@@ -2,5 +2,7 @@
     "nombre": "White Dragon Wyrmling",
     "raza": "dragon",
     "sheet": "white dragon wyrmling.png",
-    "rating": 2
+    "rating": 2,
+    "maxHP": 32,
+    "armor": 16
 }

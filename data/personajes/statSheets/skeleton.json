@@ -2,5 +2,7 @@
     "nombre": "Skeleton",
     "raza": "undead",
     "sheet": "skeleton.png",
-    "rating": 0.25
+    "rating": 0.25,
+    "maxHP": 13,
+    "armor": 13
 }

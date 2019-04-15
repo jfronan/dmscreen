@@ -33,7 +33,7 @@ export const createSubTree = function(subruta, subname) {
         };
     }
     if (arbol.name === 'locations') {
-        console.log('ARBOL:', JSON.stringify(arbol));
+        // console.log('ARBOL:', JSON.stringify(arbol));
     }
     return arbol;
 }
@@ -62,7 +62,7 @@ export const createCharList = () => {
         }
     }
     
-    console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
+    // console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
     return listaPersonajes;
 }
 

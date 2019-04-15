@@ -2,5 +2,7 @@
     "nombre": "Bugbear",
     "raza": "goblinoid",
     "sheet": "bugbear.png",
-    "rating": 1
+    "rating": 1,
+    "maxHP": 27,
+    "armor": 16
 }

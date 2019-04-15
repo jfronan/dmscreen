@@ -2,5 +2,7 @@
     "nombre": "Swarm of Rats",
     "raza": "beast",
     "sheet": "swarm of rats.png",
-    "rating": 0.25
+    "rating": 0.25,
+    "maxHP": 24,
+    "armor": 10
 }
