@@ -1,8 +1,14 @@
 const initialState = {
     listaPersonajes: [],
     bestiario: [],
+    hechizos: [],
     mostrandoFichaPJ: false,
+    mostrandoFichaHechizo: false,
     fichaPJStats: {
+      entidad: {},
+      color: null
+    },
+    fichaHechizoStats: {
       entidad: {},
       color: null
     },
@@ -40,6 +46,12 @@ const combatReducer = (state = initialState, action) => {
       listaTurnosParticipantes: initialTurnList()
     }
 
+    case 'CARGAR_HECHIZOS_SUCCESS':
+    return {
+      ...state,
+      hechizos: action.payload.hechizos
+    }
+
     case 'SELECCIONAR_PERSONAJE':
     return {
       ...state,
@@ -54,6 +66,22 @@ const combatReducer = (state = initialState, action) => {
       ...state,
       mostrandoFichaPJ: false,
       fichaPJStats: initialState.fichaPJStats
+    }
+
+    case 'SELECCIONAR_HECHIZO':
+    return {
+      ...state,
+      mostrandoFichaHechizo: true,
+      fichaHechizoStats: {
+        entidad: action.payload.hechizo,
+        color: action.payload.color
+      }
+    }
+    case 'OCULTAR_HECHIZO':
+    return {
+      ...state,
+      mostrandoFichaHechizo: false,
+      fichaHechizoStats: initialState.fichaHechizoStats
     }
 
     case 'AGREGAR_ENTIDAD_A_TURNOS':

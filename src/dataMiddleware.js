@@ -1,4 +1,4 @@
-import { APPDIR, LOCATIONS, PERSONAJES, SAVEDATA } from './Constants';
+import { APPDIR, LOCATIONS, PERSONAJES, SAVEDATA, HECHIZOS } from './Constants';
 import { isImageString } from './utils/Utils';
 var path = window.require('path');
 var fs = window.require('fs');
@@ -47,12 +47,12 @@ export const createCharList = () => {
           bestiary: []
         };
     var pcs = fs.readdirSync(rutaPCs)
-    for (var i=0; i < pcs.length; i++) {
+    for (let i=0; i < pcs.length; i++) {
         let file = rutaPCs + '/' + pcs[i];
         listaPersonajes.pcs = listaPersonajes.pcs.concat(require(file));
     }
     var monster = fs.readdirSync(rutaSheets)
-    for (var j=0; j < monster.length; j++) {
+    for (let j=0; j < monster.length; j++) {
         let file = rutaSheets + '/' + monster[j];
         if (file.endsWith('.json')) {
             var fileJson = require(file);
@@ -64,6 +64,27 @@ export const createCharList = () => {
     
     // console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
     return listaPersonajes;
+}
+
+//  Hechizos
+export const createSpellList = () => {
+    var rutaHechizos = HECHIZOS;
+    var listaHechizos = {
+          hechizos: []
+        };
+    var hechizo = fs.readdirSync(rutaHechizos)
+    for (let k=0; k < hechizo.length; k++) {
+        let file = rutaHechizos + '/' + hechizo[k];
+        if (file.endsWith('.json')) {
+            var fileJson = require(file);
+            if (fileJson.sheet && fileJson.sheet !== null && fileJson.sheet !== '') {
+                listaHechizos.hechizos = listaHechizos.hechizos.concat(fileJson);
+            }
+        }
+    }
+    
+    // console.log('listaHechizos:', JSON.stringify(listaHechizos));
+    return listaHechizos;
 }
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { capitalizeWord } from '../../utils/Utils';
 import { renderIframe } from '../../utils/Utils';
-import {PERSONAJES} from '../../Constants';
+import {PERSONAJES, HECHIZOS} from '../../Constants';
 import PcCard from '../combat/personajes/PcCard';
 
 export default class Notas extends React.Component {
@@ -21,7 +21,7 @@ export default class Notas extends React.Component {
       return (
         renderIframe(renderData.data, "fill listBoxing")
       )
-      case 'img':
+      case 'imgBestiary':
       return (
         <img src={PERSONAJES + '/statSheets/' + renderData.data}
         alt='No se encuentra imagen'
@@ -29,6 +29,14 @@ export default class Notas extends React.Component {
         align="middle"
         />
       )
+      case 'imgHechizo':
+        return (
+          <img src={HECHIZOS + '/' + renderData.data}
+          alt='No se encuentra imagen'
+          className="mapImage"
+          align="middle"
+          />
+        )
       case 'json':
       return (
         <PcCard data={renderData.data}/>

@@ -1,10 +1,39 @@
-import {createCharList} from '../dataMiddleware';
+import {createCharList, createSpellList} from '../dataMiddleware';
 
 export const cargarPersonajes = ()=> {
   return async (dispatch) => {
     dispatch ({
       type: 'CARGAR_PERSONAJES_SUCCESS',
       payload: createCharList()
+    });
+  };
+}
+
+export const cargarHechizos = ()=> {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'CARGAR_HECHIZOS_SUCCESS',
+      payload: createSpellList()
+    });
+  };
+}
+
+export const seleccionarHechizo = (hechizo, color)=> {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'SELECCIONAR_HECHIZO',
+      payload: {
+        hechizo: hechizo,
+        color: color
+      }
+    });
+  };
+}
+
+export const ocultarDetallesHechizo = ()=> {
+  return async (dispatch) => {
+    dispatch ({
+      type: 'OCULTAR_HECHIZO'
     });
   };
 }

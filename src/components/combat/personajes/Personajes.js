@@ -49,7 +49,7 @@ export default class Personajes extends React.Component {
                         titulo={this.props.datosSeleccion.entidad.nombre}
                         color={this.props.datosSeleccion.color}
                         renderData={this.props.datosSeleccion.entidad.sheet
-                            ? {data: this.props.datosSeleccion.entidad.sheet, type: "img"}
+                            ? {data: this.props.datosSeleccion.entidad.sheet, type: "imgBestiary"}
                             : {data: this.props.datosSeleccion.entidad, type: "json"}}
                     />
                 </div>
