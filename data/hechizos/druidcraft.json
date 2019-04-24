@@ -1,5 +1,6 @@
 {
     "nombre": "Druidcraft",
     "sheet": "druidcraft.png",
-    "level": 0
+    "level": 0,
+    "school": "transmutation"
 }

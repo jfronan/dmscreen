@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Luminari;
+  src: URL('Luminari.ttf') format('truetype');
+}
+
 .App {
   height: 100vh;
   width: 100vw;
@@ -32,6 +37,10 @@
 
 .spaced {
   justify-content: space-between;
+}
+
+.centered {
+  align-items: center;
 }
 
 .spaceAround {
@@ -231,8 +240,18 @@
   background-blend-mode: overlay;
 }
 
+.gear {
+  background-color: rgb(75, 57, 11);
+  background-image: url(../assets/backgrounds/mechanus.png);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+  border-radius: 16px;
+  border: double black 4px;
+}
+
 .boxTitle {
-  font-family: fantasy;
+  font-family: Luminari;
   height: 16px;
   width: 100%;
   border: 0px solid;
@@ -307,6 +326,126 @@
   z-index: 10;
 }
 
+.gearButtons {
+  position: relative;
+  font-family: Luminari;
+  font-size: 24px;
+  line-height: 32px;
+  align-self: center;
+  height: 64px;
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.gearSubButtons {
+  border-top: solid 1px black;
+  text-align: center;
+}
+
+.gearFooter {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 64px;
+  border-top: solid 1px black;
+  font-family: Luminari;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.centerContent {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.gearBackButton {
+  height: 32px;
+  width: 60%;
+  border: double black 4px;
+  background-color: darkgray;
+}
+
+.gearConfirmDisabledButton {
+  height: 32px;
+  width: 60%;
+  border: double black 4px;
+  background-color: darkgray;
+  color: grey
+}
+
+.gearConfirmEnabledButton {
+  height: 32px;
+  width: 60%;
+  border: double black 4px;
+  background-color: #90ee90;
+}
+
+.dropzoneText {
+  font-family: Luminari;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 8px;
+  text-align: center;
+}
+
+.dropzone {
+  height: 48px;
+  width: 75%;
+  border: dotted 2px black;
+  background-color: rgba(88, 88, 88, 0.6)
+}
+
+.gearTextInputContainer {
+  overflow: hidden;
+  border: double 1px black;
+  background-image: url(../assets/backgrounds/mechanus.png);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+  width: 40%;
+  font-family: Luminari;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.1em
+}
+
+.gearTextInputWriteZone {
+  border: solid 1px black;
+  width: 75%;
+  font-size: 14px;
+  line-height: 18px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+}
+
+.Luminari {
+  font-family: Luminari
+}
+
+.paddingBottom64 {
+  padding-bottom: 64px
+}
+
+.padding8 {
+  padding: 8px;
+}
+
+.padding16 {
+  padding: 16px;
+}
+
+.borderRight {
+  border-right: solid 1px black;
+}
+
 .botonCerrar {
   top: 3px;
 }
@@ -370,6 +509,10 @@
   margin-bottom: -1px;
 }
 
+.marginBottom16 {
+  margin-bottom: 16px;
+}
+
 .inlineBlock {
   display: inline-block;
 }
@@ -378,13 +521,14 @@
   overflow: auto;
 }
 
-iframe[seamless] {
-  border: none;
+.fullwidth {
+  width: 100%;
 }
 
+.overlay {
+  background-blend-mode: overlay;
+}
 
-
-
-.test {
-  background-color: cyan;
+iframe[seamless] {
+  border: none;
 }

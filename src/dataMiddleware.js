@@ -82,7 +82,7 @@ export const createSpellList = () => {
             }
         }
     }
-    
+
     // console.log('listaHechizos:', JSON.stringify(listaHechizos));
     return listaHechizos;
 }
@@ -111,5 +111,30 @@ export const retrieveNotes = () => {
         return {notes: notes}
     } catch (e) {
         return {notes: []}
+    }
+}
+
+
+// Data Write
+export const saveFile = (file, route, fileType) => {
+    var saved = false;
+    saved = fs.writeFileSync(route, file, fileType);
+    return typeof saved === 'undefined';
+};
+
+// Rename File
+export const renameFile = (oldRoute, newRoute) => {
+    var renamed = false;
+    renamed = fs.renameSync(oldRoute, newRoute);
+    return typeof renamed === 'undefined';
+}
+
+// Delete File
+export const unlinkFile = (route) => {
+    try {
+        fs.unlinkSync(route)
+        //file removed
+    } catch(err) {
+        console.error(err)
     }
 }

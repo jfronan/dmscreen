@@ -1,5 +1,6 @@
 {
     "nombre": "Produce Flame",
     "sheet": "produce flame.png",
-    "level": 0
+    "level": 0,
+    "school": "conjuration"
 }

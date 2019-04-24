@@ -1,6 +1,7 @@
 import MainScreen from './MainScreen';
 import { connect } from 'react-redux';
 import * as mainActions from '../actions/MainScreenAction';
+import * as gearActions from '../actions/GearAction';
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +14,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    alternarCombateMapa: () => dispatch(mainActions.alternarCombateMapa())
+    alternarCombateMapa: () => dispatch(mainActions.alternarCombateMapa()),
+    abrirModalConfig: () => dispatch(gearActions.abrirModal())
   };
 };
 

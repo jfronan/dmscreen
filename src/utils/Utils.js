@@ -1,4 +1,5 @@
 import React from 'react';
+var fs = window.require('fs');
 
 export const capitalizeWord = (stringBase)=> {
     try {
@@ -31,6 +32,22 @@ export const capitalizeEveryWord = (stringBase)=> {
     }
 }
 
+export const spacedStringCamelCase = (stringBase) => {
+    try {
+        var stringFragments = stringBase.split(" ");
+        var stringFinal = stringFragments[0];
+        for (let i = 1; i < stringFragments.length; i++) {
+            stringFinal = stringFinal + capitalizeWord(stringFragments[i]);
+        };
+        return stringFinal;
+    } catch (error) {
+        if (typeof stringBase === 'string') {
+            console.log(error);
+        }
+        return stringBase;
+    }
+}
+
 export const addPlusIfPositive = (number)=> {
     try {
         if (number >= 0) {
@@ -45,6 +62,7 @@ export const addPlusIfPositive = (number)=> {
 }
 
 export const renderIframe = (url, classes)=> {
+    console.log(url);
   var frameLoad = (frameRef)=> {
     var frame = frameRef.target;
     var body = frame.contentWindow.document.body;
@@ -67,9 +85,12 @@ export const renderIframe = (url, classes)=> {
         textAreas[i].disabled = true;
     }
   };
-  return(
-    <iframe id="myFrame" className={classes} src={url} onLoad={(frameRef)=> frameLoad(frameRef)} seamless/>
-  )
+  try {
+    fs.lstatSync(url)
+    return(
+        <iframe id="myFrame" className={classes} src={url} onLoad={(frameRef)=> frameLoad(frameRef)} seamless/>
+    )
+  } catch (e) {return (<div></div>)}
 }
 
 export const isImageString = (fileName)=> {

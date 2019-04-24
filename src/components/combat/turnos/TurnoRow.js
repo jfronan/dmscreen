@@ -19,7 +19,7 @@ export default class TurnoRow extends React.Component {
               numericPartString = numericPartString.substring(1);
             }
           }
-          numericPart = parseInt(numericPartString, 10);
+          numericPart = parseInt(numericPartString, 10) || 0;
         }
         return numericPart;
       } catch (e) {console.log(e)}

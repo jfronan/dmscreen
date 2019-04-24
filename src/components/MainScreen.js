@@ -3,6 +3,7 @@ import React from 'react';
 import MapScreen from "./map/MapScreenContainer";
 import CombatScreen from "./combat/CombatScreenContainer";
 import ModalZoom from "./ModalZoomContainer";
+import GearModal from "./GearModalContainer";
 import Window from "./Window";
 import LogWindow from "./logger/LogWindowContainer";
 import NotasArea from './notasArea/NotasAreaContainer';
@@ -39,6 +40,7 @@ export default class MainScreen extends React.Component {
     return (
       <div className="App">
         <ModalZoom/>
+        <GearModal/>
         <div className="opcionesBox">
           <div id="mainAlternador" onClick={this.onAlternarPress} className="button opcionesButton clickFeedback yellowish">
             {this.props.modoCombate
@@ -46,7 +48,7 @@ export default class MainScreen extends React.Component {
             : <img src={"./assets/combatPage.png"} className="roundImages" alt="Go to Combat" title="Go to Combat"/>
             }
           </div>
-          <div id="opciones" className="button opcionesButton clickFeedback greyish">
+          <div id="opciones" className="button opcionesButton clickFeedback greyish" onClick={()=> this.props.abrirModalConfig()}>
             <img src={"./assets/settingsIcon.png"} className="roundImages" alt="Opciones"/>
           </div>
         </div>
