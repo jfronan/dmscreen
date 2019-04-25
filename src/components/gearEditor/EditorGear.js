@@ -1,6 +1,8 @@
 import React from 'react';
 import SpellAdder from './spellEditor/AdderContainer';
 import SpellEditor from './spellEditor/EditorContainer';
+import BestiaryAdder from './bestiaryEditor/AdderContainer';
+import BestiaryEditor from './bestiaryEditor/EditorContainer';
 
 export default class GearModal extends React.Component {
 
@@ -17,6 +19,12 @@ export default class GearModal extends React.Component {
         break;
         case "editarHechizos":
         this.props.editarHechizo()
+        break;
+        case "agregarMonstruo":
+        this.props.guardarMonstruo()
+        break;
+        case "editarMonstruo":
+        this.props.editarMonstruo()
         break;
 
         default: break;
@@ -72,6 +80,10 @@ export default class GearModal extends React.Component {
                     return <SpellAdder/>;
                     case "editarHechizos":
                     return <SpellEditor/>;
+                    case "agregarMonstruo":
+                    return <BestiaryAdder/>;
+                    case "editarMonstruo":
+                    return <BestiaryEditor/>;
 
                     default: return null;
                 }

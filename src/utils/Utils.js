@@ -62,7 +62,6 @@ export const addPlusIfPositive = (number)=> {
 }
 
 export const renderIframe = (url, classes)=> {
-    console.log(url);
   var frameLoad = (frameRef)=> {
     var frame = frameRef.target;
     var body = frame.contentWindow.document.body;

@@ -5,14 +5,15 @@ import * as gearActions from '../../../actions/GearAction';
 const mapStateToProps = state => {
   return {
     imagenASubir: state.gear.imagenAGuardar,
-    spellCargado: state.gear.hechizoAGuardar
+    monstruoCargado: state.gear.monstruoAGuardar,
+    spellList: state.gear.spellList
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    uploadImage: (file) => dispatch(gearActions.uploadImage(file, "spell")),
-    changeStat: (stat, value) => dispatch(gearActions.changeSpellStat(stat, value))
+    uploadImage: (file) => dispatch(gearActions.uploadImage(file, "monster")),
+    changeStat: (stat, value) => dispatch(gearActions.changeMonsterStat(stat, value))
   };
 };
 

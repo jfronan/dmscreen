@@ -14,6 +14,14 @@ const mapDispatchToProps = dispatch => {
     cerrarModal: () => dispatch(gearActions.cerrarModal()),
     goToAddMagic: () => dispatch(gearActions.goToAddMagic()),
     goToEditMagic: () => dispatch(gearActions.goToEditMagic()),
+    goToAddBeast: () => dispatch(gearActions.goToAddBeast()),
+    goToEditBeast: () => dispatch(gearActions.goToEditBeast()),
+    goToAddPc: () => dispatch(gearActions.goToAddPc()),
+    goToEditPc: () => dispatch(gearActions.goToEditPc()),
+    goToAddNpc: () => dispatch(gearActions.goToAddNpc()),
+    goToEditNpc: () => dispatch(gearActions.goToEditNpc()),
+    goToAddLocation: () => dispatch(gearActions.goToAddLocation()),
+    goToEditLocation: () => dispatch(gearActions.goToEditLocation())
   };
 };
 

@@ -35,6 +35,17 @@
   flex-direction: row;
 }
 
+.flexWrap {
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.fromStart {
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
 .spaced {
   justify-content: space-between;
 }
@@ -414,6 +425,13 @@
   letter-spacing: 0.1em
 }
 
+.gearAdderItemList {
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  border: solid 1px black;
+}
+
 .gearTextInputWriteZone {
   border: solid 1px black;
   width: 75%;
@@ -440,6 +458,19 @@
 
 .padding16 {
   padding: 16px;
+}
+
+.paddingHorizontal8 {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.paddingRight16 {
+  padding-right: 16px
+}
+
+.paddingRight24 {
+  padding-right: 24px
 }
 
 .borderRight {
@@ -523,6 +554,14 @@
 
 .fullwidth {
   width: 100%;
+}
+
+.autoWidth {
+  width: auto;
+}
+
+.autoHeight {
+  height: auto;
 }
 
 .overlay {

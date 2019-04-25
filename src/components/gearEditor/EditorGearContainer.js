@@ -14,13 +14,22 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     returnToGearMenu: () => dispatch(gearActions.returnToGearMenu()),
+
     guardarHechizo: () => {
         dispatch(gearActions.guardarHechizo())
         .then(()=> {
             dispatch(combatActions.cargarHechizos());
         })
     },
-    editarHechizo: () => dispatch(gearActions.editarHechizo())
+    editarHechizo: () => dispatch(gearActions.editarHechizo()),
+
+    guardarMonstruo: () => {
+        dispatch(gearActions.guardarMonstruo())
+        .then(()=> {
+            dispatch(combatActions.cargarPersonajes());
+        })
+    },
+    editarMonstruo: () => dispatch(gearActions.editarMonstruo())
   };
 };
 

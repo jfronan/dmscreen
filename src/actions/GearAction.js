@@ -41,7 +41,6 @@ export const goToAddMagic = () => {
       type: 'AGREGAR_HECHIZOS_GEAR'
     };
 }
-
 export const goToEditMagic = () => {
     let listaHechizos = dataMiddleware.createSpellList();
     return {
@@ -49,15 +48,66 @@ export const goToEditMagic = () => {
       payload: listaHechizos
     };
 }
-export const selectSpell = (spell, realIndex) => {
+export const goToAddBeast = () => {
+    let listaHechizos = dataMiddleware.createSpellList();
     return {
-      type: 'SELECT_EDITAR_HECHIZOS_GEAR',
+        type: 'AGREGAR_MONSTRUO_GEAR',
+        payload: listaHechizos
+    };
+}
+export const goToEditBeast = () => {
+    let listaHechizos = dataMiddleware.createSpellList();
+    let bestiario = dataMiddleware.createBestiaryList();
+    return {
+        type: 'EDITAR_MONSTRUO_GEAR',
+        payload: {
+            listaHechizos: listaHechizos,
+            bestiario: bestiario
+        }
+    };
+}
+export const goToAddPc = () => {
+    return {
+        type: 'AGREGAR_PC_GEAR'
+    };
+}
+export const goToEditPc = () => {
+    return {
+        type: 'EDITAR_PC_GEAR'
+    };
+}
+export const goToAddNpc = () => {
+    return {
+        type: 'AGREGAR_NPC_GEAR'
+    };
+}
+export const goToEditNpc = () => {
+    return {
+        type: 'EDITAR_NPC_GEAR'
+    };
+}
+export const goToAddLocation = () => {
+    return {
+        type: 'AGREGAR_LOCATION_GEAR'
+    };
+}
+export const goToEditLocation = () => {
+    return {
+        type: 'EDITAR_LOCATION_GEAR'
+    };
+}
+
+export const selectEntity = (entity, realIndex) => {
+    return {
+      type: 'SELECT_EDITAR_ENTIDAD_GEAR',
       payload: {
-        spell: spell,
+        entity: entity,
         index: realIndex
       }
     };
 }
+
+// Spell
 export const editarHechizo = () => {
     return {
       type: 'CONFIRMED_EDITAR_HECHIZOS_GEAR',
@@ -77,8 +127,33 @@ export const changeSpellStat = (stat, value) => {
 export const guardarHechizo = () => {
     return async (dispatch) => {
         dispatch ({
-            type: 'GRABAR_HECHIZO_DB_GEAR',
-            dispatch: dispatch
+            type: 'GRABAR_HECHIZO_DB_GEAR'
         })
     }
 }
+
+// Monster
+export const editarMonstruo = () => {
+    return {
+      type: 'CONFIRMED_EDITAR_MONSTRUO_GEAR',
+    };
+}
+
+export const changeMonsterStat = (stat, value) => {
+    return {
+        type: 'MODIFICAR_MONSTRUO_A_GUARDAR_GEAR',
+        payload: {
+            stat: stat,
+            value: value
+        }
+    };
+}
+
+export const guardarMonstruo = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'GRABAR_MONSTRUO_DB_GEAR'
+        })
+    }
+}
+

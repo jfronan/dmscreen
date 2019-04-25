@@ -3,6 +3,11 @@ import { isImageString } from './utils/Utils';
 var path = window.require('path');
 var fs = window.require('fs');
 
+function requireUncached(module){
+    delete require.cache[require.resolve(module)]
+    return require(module)
+}
+
 // Locations
 export const createSubTree = function(subruta, subname) {
     var ruta = subruta || LOCATIONS;
@@ -40,30 +45,40 @@ export const createSubTree = function(subruta, subname) {
 
 //  Personajes
 export const createCharList = () => {
-    var rutaPCs = PERSONAJES + '/pcs';
-    var rutaSheets = PERSONAJES + '/statSheets';
     var listaPersonajes = {
-          pcs: [],
-          bestiary: []
+          pcs: createPCsList(),
+          bestiary: createBestiaryList()
         };
-    var pcs = fs.readdirSync(rutaPCs)
-    for (let i=0; i < pcs.length; i++) {
-        let file = rutaPCs + '/' + pcs[i];
-        listaPersonajes.pcs = listaPersonajes.pcs.concat(require(file));
-    }
+    // console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
+    return listaPersonajes;
+}
+
+export const createBestiaryList = () => {
+    var rutaSheets = PERSONAJES + '/statSheets';
+    var bestiary = [];
     var monster = fs.readdirSync(rutaSheets)
     for (let j=0; j < monster.length; j++) {
         let file = rutaSheets + '/' + monster[j];
         if (file.endsWith('.json')) {
-            var fileJson = require(file);
+            var fileJson = requireUncached(file);
             if (fileJson.sheet && fileJson.sheet !== null && fileJson.sheet !== '') {
-                listaPersonajes.bestiary = listaPersonajes.bestiary.concat(fileJson);
+                bestiary = bestiary.concat(fileJson);
             }
         }
     }
-    
-    // console.log('listaPersonajes:', JSON.stringify(listaPersonajes));
-    return listaPersonajes;
+
+    return bestiary;
+}
+export const createPCsList = () => {
+    var rutaPCs = PERSONAJES + '/pcs';
+    var pcsList = [];
+    var pcs = fs.readdirSync(rutaPCs)
+    for (let i=0; i < pcs.length; i++) {
+        let file = rutaPCs + '/' + pcs[i];
+        pcsList = pcsList.concat(requireUncached(file));
+    }
+
+    return pcsList;
 }
 
 //  Hechizos
@@ -76,7 +91,7 @@ export const createSpellList = () => {
     for (let k=0; k < hechizo.length; k++) {
         let file = rutaHechizos + '/' + hechizo[k];
         if (file.endsWith('.json')) {
-            var fileJson = require(file);
+            var fileJson = requireUncached(file);
             if (fileJson.sheet && fileJson.sheet !== null && fileJson.sheet !== '') {
                 listaHechizos.hechizos = listaHechizos.hechizos.concat(fileJson);
             }
@@ -95,7 +110,7 @@ export const storeLogs = (logs) => {
 }
 export const retrieveLogs = () => {
     try {
-        var logs = require(SAVEDATA + "/logs.json").logs
+        var logs = requireUncached(SAVEDATA + "/logs.json").logs
         return {logs: logs}
     } catch (e) {
         return {logs: []}
@@ -107,7 +122,7 @@ export const storeNotes = (notes) => {
 }
 export const retrieveNotes = () => {
     try {
-        var notes = require(SAVEDATA + "/notes.json").notes
+        var notes = requireUncached(SAVEDATA + "/notes.json").notes
         return {notes: notes}
     } catch (e) {
         return {notes: []}
@@ -117,6 +132,7 @@ export const retrieveNotes = () => {
 
 // Data Write
 export const saveFile = (file, route, fileType) => {
+    unlinkFile(route);
     var saved = false;
     saved = fs.writeFileSync(route, file, fileType);
     return typeof saved === 'undefined';

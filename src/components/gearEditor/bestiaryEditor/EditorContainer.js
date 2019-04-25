@@ -5,14 +5,14 @@ import * as gearActions from '../../../actions/GearAction';
 let encapsulateSpells = (list) => {
     let encapsulatedList = [];
     for (let i=0; i < list.length; i++) {
-        encapsulatedList = encapsulatedList.concat({hechizo: list[i], index: i})
+        encapsulatedList = encapsulatedList.concat({monster: list[i], index: i})
     }
     return encapsulatedList;
 }
 
 const mapStateToProps = state => {
   return {
-    spellList: encapsulateSpells(state.gear.spellList),
+    bestiario: encapsulateSpells(state.gear.bestiario),
     editSelected: state.gear.editSelected,
     selectedIndex: state.gear.selectedIndex
   };
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectSpell: (spell, originalIndex) => dispatch(gearActions.selectEntity(spell, originalIndex)),
+    selectMonstruo: (monstruo, originalIndex) => dispatch(gearActions.selectEntity(monstruo, originalIndex)),
   };
 };
 

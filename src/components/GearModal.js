@@ -45,29 +45,29 @@ export default class GearModal extends React.Component {
                     <div className="gearButtons gear flex violet">
                       <div className="flex1">Bestiario</div>
                       <div className="flex1 flexRow spaced fullwidth">
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight">Agregar</div>
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback">Editar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight" onClick={()=> this.props.goToAddBeast()}>Agregar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback" onClick={()=> this.props.goToEditBeast()}>Editar</div>
                       </div>
                     </div>
                     <div className="gearButtons gear flex violet">
                       <div className="flex1">PCs</div>
                       <div className="flex1 flexRow spaced fullwidth">
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight">Agregar</div>
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback">Editar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight" onClick={()=> this.props.goToAddPc()}>Agregar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback" onClick={()=> this.props.goToEditPc()}>Editar</div>
                       </div>
                     </div>
                     <div className="gearButtons gear flex violet">
                       <div className="flex1">NPCs</div>
                       <div className="flex1 flexRow spaced fullwidth">
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight">Agregar</div>
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback">Editar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight" onClick={()=> this.props.goToAddNpc()}>Agregar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback" onClick={()=> this.props.goToEditNpc()}>Editar</div>
                       </div>
                     </div>
                     <div className="gearButtons gear flex violet">
                       <div className="flex1">Locations</div>
                       <div className="flex1 flexRow spaced fullwidth">
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight">Agregar</div>
-                        <div className="flex1 gearSubButtons hoverPoint clickFeedback">Editar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback borderRight" onClick={()=> this.props.goToAddLocation()}>Agregar</div>
+                        <div className="flex1 gearSubButtons hoverPoint clickFeedback" onClick={()=> this.props.goToEditLocation()}>Editar</div>
                       </div>
                     </div>
                   </div>
