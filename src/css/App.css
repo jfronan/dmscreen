@@ -432,6 +432,16 @@
   border: solid 1px black;
 }
 
+.checkBoxTextGear {
+  font-size: 14px;
+  line-height: 16px;
+  height: 16px;
+}
+
+.checkBoxTextGear input {
+  margin: 0;
+}
+
 .gearTextInputWriteZone {
   border: solid 1px black;
   width: 75%;
@@ -529,6 +539,13 @@
 
 .flex1 {
   flex: 1;
+}
+
+.width20 {
+  width: 20%;
+}
+.width30 {
+  width: 30%;
 }
 
 .hoverPoint:hover {

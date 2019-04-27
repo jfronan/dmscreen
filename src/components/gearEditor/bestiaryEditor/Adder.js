@@ -96,7 +96,7 @@ export default class Adder extends React.Component {
                                 className="gearTextInputWriteZone Luminari"
                                 onChange={(e)=> {
                                     e.target.value = this.handleNumericInput(e.target.value);
-                                    this.props.changeStat("maxHP", e.target.value)
+                                    this.props.changeStat("maxHP", parseInt(e.target.value, 10))
                                 }}
                                 maxLength="4"
                             />
@@ -114,7 +114,7 @@ export default class Adder extends React.Component {
                                 className="gearTextInputWriteZone Luminari"
                                 onChange={(e)=> {
                                     e.target.value = this.handleNumericInput(e.target.value);
-                                    this.props.changeStat("armor", e.target.value)
+                                    this.props.changeStat("armor", parseInt(e.target.value, 10))
                                 }}
                                 maxLength="3"
                             />
@@ -124,7 +124,7 @@ export default class Adder extends React.Component {
                         <div>
                             Challenge Rating
                         </div>
-                        <select className="gearTextInputWriteZone Luminari" value={this.props.monstruoCargado.rating} onChange={(e)=> {this.props.changeStat("rating", e.target.value)}}>
+                        <select className="gearTextInputWriteZone Luminari" value={this.props.monstruoCargado.rating} onChange={(e)=> {this.props.changeStat("rating", parseFloat(e.target.value))}}>
                             <option value={0}>0</option>
                             <option value={0.125}>1/8</option>
                             <option value={0.25}>1/4</option>

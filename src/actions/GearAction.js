@@ -67,13 +67,21 @@ export const goToEditBeast = () => {
     };
 }
 export const goToAddPc = () => {
+    //let listaHechizos = dataMiddleware.createSpellList();
     return {
-        type: 'AGREGAR_PC_GEAR'
+        type: 'AGREGAR_PC_GEAR',
+        //payload: listaHechizos
     };
 }
 export const goToEditPc = () => {
+    //let listaHechizos = dataMiddleware.createSpellList();
+    let listaPersonajes = dataMiddleware.createPCsList();
     return {
-        type: 'EDITAR_PC_GEAR'
+        type: 'EDITAR_PC_GEAR',
+        payload: {
+            //listaHechizos: listaHechizos,
+            listaPersonajes: listaPersonajes
+        }
     };
 }
 export const goToAddNpc = () => {
@@ -153,6 +161,30 @@ export const guardarMonstruo = () => {
     return async (dispatch) => {
         dispatch ({
             type: 'GRABAR_MONSTRUO_DB_GEAR'
+        })
+    }
+}
+
+// Personaje
+export const editarPersonaje = () => {
+    return {
+      type: 'CONFIRMED_EDITAR_PERSONAJE_GEAR',
+    };
+}
+export const changePersonajeStat = (stat, value) => {
+    return {
+        type: 'MODIFICAR_PERSONAJE_A_GUARDAR_GEAR',
+        payload: {
+            stat: stat,
+            value: value
+        }
+    };
+}
+
+export const guardarPersonaje = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'GRABAR_PERSONAJE_DB_GEAR'
         })
     }
 }

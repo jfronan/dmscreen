@@ -431,9 +431,9 @@ export default class PcCard extends React.Component {
                 </div>
             </div>
             
-            {(data.resistance && data.resistances.length > 0)
+            {(data.resistances && data.resistances.length > 0)
                 ? <div id="PCresistances" className="backSilver">
-                    <div style={{borderBottom: "solid 1px black", "text-align": "center"}}>Resistances</div>
+                    <div style={{borderBottom: "solid 1px black", textAlign: "center"}}>Resistances</div>
                     <div className="flexRow spaceAround">
                         {data.resistances.map((resistance, index)=>
                             <div key={"resistencia" + resistance + index}>{capitalizeEveryWord(resistance)}</div>
@@ -444,7 +444,7 @@ export default class PcCard extends React.Component {
             }
             {(data.immunities && data.immunities.length > 0)
                 ? <div id="PCimmunities" className="backGold">
-                    <div style={{borderBottom: "solid 1px black", "text-align": "center"}}>Immunities</div>
+                    <div style={{borderBottom: "solid 1px black", textAlign: "center"}}>Immunities</div>
                     <div className="flexRow spaceAround">
                         {data.immunities.map((immunitie, index)=>
                             <div key={"inmunidad" + immunitie + index}>{capitalizeEveryWord(immunitie)}</div>

@@ -132,7 +132,6 @@ export const retrieveNotes = () => {
 
 // Data Write
 export const saveFile = (file, route, fileType) => {
-    unlinkFile(route);
     var saved = false;
     saved = fs.writeFileSync(route, file, fileType);
     return typeof saved === 'undefined';

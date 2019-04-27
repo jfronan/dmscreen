@@ -29,7 +29,15 @@ const mapDispatchToProps = dispatch => {
             dispatch(combatActions.cargarPersonajes());
         })
     },
-    editarMonstruo: () => dispatch(gearActions.editarMonstruo())
+    editarMonstruo: () => dispatch(gearActions.editarMonstruo()),
+
+    guardarPersonaje: () => {
+        dispatch(gearActions.guardarPersonaje())
+        .then(()=> {
+            dispatch(combatActions.cargarPersonajes());
+        })
+    },
+    editarPersonaje: () => dispatch(gearActions.editarPersonaje())
   };
 };
 

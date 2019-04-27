@@ -11,6 +11,7 @@ const initialState = {
     showingScreen: '',
     spellList: [],
     bestiario: [],
+    listaPersonajes: [],
     actualFormIsComplete: false,
     editSelected: {},
     selectedIndex: null,
@@ -29,6 +30,35 @@ const initialState = {
         armor: 0,
         spells: []
     },
+    personajeAGuardar: {
+        nombre: '',
+        raza: '',
+        clases: [],
+        background: '',
+        alignment: '',
+        level: 1,
+        experience: 0,
+        maxHP: 0,
+        armor: 0,
+        speed: 0,
+        proficiency: 2,
+        maxHitDice: [],
+        strength: 8,
+        dexterity: 8,
+        constitution: 8,
+        intelligence: 8,
+        wisdom: 8,
+        charisma: 8,
+        proficiencies: [],
+        expertise: [],
+        resistances: [],
+        immunities: [],
+        additionalInit: 0,
+        additionalPercep: 0,
+        darkvision: 0,
+        abilities: ''
+    },
+    nombreDeArchivo: '',
     imagenAGuardar: ''
   };
 
@@ -94,6 +124,22 @@ const gearReducer = (state = initialState, action) => {
         spellList: action.payload.listaHechizos.hechizos,
         bestiario: action.payload.bestiario
     }
+
+    case 'AGREGAR_PC_GEAR':
+    return {
+        ...state,
+        showingScreen: 'agregarPersonaje',
+        //spellList: action.payload.hechizos
+    }
+    case 'EDITAR_PC_GEAR':
+    return {
+        ...state,
+        showingScreen: 'editarPersonaje',
+        //spellList: action.payload.listaHechizos.hechizos,
+        listaPersonajes: action.payload.listaPersonajes
+    }
+
+
     case 'SELECT_EDITAR_ENTIDAD_GEAR':
     return {
         ...state,
@@ -173,6 +219,38 @@ const gearReducer = (state = initialState, action) => {
         if (state.editSelected.sheet && state.editSelected.sheet !== state.monstruoAGuardar.sheet) {
             unlinkFile((PERSONAJES + '/statSheets/' + state.editSelected.sheet).replace('.png', '.json'));
         }
+        let modif = Object.assign({}, initialState);
+        modif.modalAbierto = true;
+        return modif;
+    }
+    return state;
+
+    // Personaje
+    case 'CONFIRMED_EDITAR_PERSONAJE_GEAR':
+    return {
+        ...state,
+        personajeAGuardar: state.editSelected,
+        showingScreen: 'agregarPersonaje',
+        nombreDeArchivo: validateFileName(state.editSelected.nombre) + '.json'
+    }
+    case 'MODIFICAR_PERSONAJE_A_GUARDAR_GEAR':
+    return {
+        ...state,
+        personajeAGuardar: {
+            ...state.personajeAGuardar,
+            [action.payload.stat]: action.payload.value
+        },
+        nombreDeArchivo: (action.payload.stat === "nombre" ? (validateFileName(action.payload.value) !== '' ? validateFileName(action.payload.value) + '.json' : '') : state.nombreDeArchivo),
+        actualFormIsComplete: (
+            (state.nombreDeArchivo !== '' || (action.payload.stat === "nombre" && validateFileName(action.payload.value) !== ''))
+            && (state.personajeAGuardar.maxHP !== null || (action.payload.stat === "maxHP" && action.payload.value !== null))
+            && (state.personajeAGuardar.armor !== null || (action.payload.stat === "armor" && action.payload.value !== null))
+        )
+    }
+    
+    case 'GRABAR_PERSONAJE_DB_GEAR':
+    var saveSuccess = saveFile(JSON.stringify(state.personajeAGuardar), (PERSONAJES + '/pcs/' + state.nombreDeArchivo))
+    if (saveSuccess) {
         let modif = Object.assign({}, initialState);
         modif.modalAbierto = true;
         return modif;
