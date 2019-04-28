@@ -5,6 +5,8 @@ import BestiaryAdder from './bestiaryEditor/AdderContainer';
 import BestiaryEditor from './bestiaryEditor/EditorContainer';
 import CharacterAdder from './characterEditor/AdderContainer';
 import CharacterEditor from './characterEditor/EditorContainer';
+import NPCAdder from './npcEditor/AdderContainer';
+import NPCEditor from './npcEditor/EditorContainer';
 
 export default class GearModal extends React.Component {
 
@@ -34,6 +36,12 @@ export default class GearModal extends React.Component {
         case "editarPersonaje":
         this.props.editarPersonaje()
         break;
+        case "agregarNPC":
+        this.props.guardarNPC()
+        break;
+        case "editarNPC":
+        this.props.editarNPC()
+        break;
 
         default: break;
       }
@@ -60,7 +68,8 @@ export default class GearModal extends React.Component {
         )
     }
     if (show.startsWith("editar")) {
-        if (Object.keys(this.props.editSelected).length > 0 && this.props.editSelected.constructor === Object) {
+        if ((Object.keys(this.props.editSelected).length > 0 && this.props.editSelected.constructor === Object)
+            || (this.props.editingTextAreaTitle && this.props.editingTextAreaTitle !== '')) {
             return (
                 <div className="flex1 flex centerContent">
                     <div className="gearConfirmEnabledButton hoverPoint clickFeedback" onClick={()=> this.confirmFunction(show)}>
@@ -96,6 +105,10 @@ export default class GearModal extends React.Component {
                     return <CharacterAdder/>;
                     case "editarPersonaje":
                     return <CharacterEditor/>;
+                    case "agregarNPC":
+                    return <NPCAdder/>;
+                    case "editarNPC":
+                    return <NPCEditor/>;
 
                     default: return null;
                 }

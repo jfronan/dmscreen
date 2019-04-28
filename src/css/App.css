@@ -454,6 +454,14 @@
   outline: none;
 }
 
+.writableTextArea {
+  min-width: 100%;
+  min-height: 85%;
+  border: none;
+  padding: 0px;
+  resize: none;
+}
+
 .Luminari {
   font-family: Luminari
 }

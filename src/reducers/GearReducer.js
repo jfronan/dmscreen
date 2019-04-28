@@ -1,9 +1,18 @@
 import {HECHIZOS, PERSONAJES} from '../Constants';
-import {spacedStringCamelCase} from '../utils/Utils';
-import {saveFile, renameFile, unlinkFile} from '../dataMiddleware';
+import {spacedStringCamelCase, capitalizeEveryWord} from '../utils/Utils';
+import {saveFile, renameFile, unlinkFile, mkdir, unlinkDir} from '../dataMiddleware';
+var fs = window.require('fs');
 
 var validateFileName = (stringBase) => {
     return spacedStringCamelCase(stringBase).replace(/[^A-Z]/gi, '');
+}
+
+var createHTMLTextArea = (textAreaContent, textAreaImg) => {
+    let content = `<textarea class="writableTextArea flex1" disabled>${textAreaContent}</textarea>`
+    if (textAreaImg && textAreaImg !== '') {
+        content = content + `<img src="./npcImg.png"/>`
+    }
+    return content;
 }
 
 const initialState = {
@@ -12,6 +21,7 @@ const initialState = {
     spellList: [],
     bestiario: [],
     listaPersonajes: [],
+    npcList: [],
     actualFormIsComplete: false,
     editSelected: {},
     selectedIndex: null,
@@ -58,6 +68,11 @@ const initialState = {
         darkvision: 0,
         abilities: ''
     },
+    tituloTextArea: '',
+    editingTextAreaTitle: '',
+    textAreaValue: '',
+    textAreaFinalRendering: '',
+    textAreaImage: '',
     nombreDeArchivo: '',
     imagenAGuardar: ''
   };
@@ -90,6 +105,12 @@ const gearReducer = (state = initialState, action) => {
             ...state,
             imagenAGuardar: action.payload.file,
             actualFormIsComplete: (action.payload.file !== '' && state.monstruoAGuardar.sheet !== '' && state.monstruoAGuardar.maxHP !== '' && state.monstruoAGuardar.armor !== '')
+        }
+        case "textArea":
+        return {
+            ...state,
+            textAreaImage: action.payload.file,
+            actualFormIsComplete: (action.payload.file !== '' && state.tituloTextArea !== '')
         }
 
         default: 
@@ -139,6 +160,17 @@ const gearReducer = (state = initialState, action) => {
         listaPersonajes: action.payload.listaPersonajes
     }
 
+    case 'AGREGAR_NPC_GEAR':
+    return {
+        ...state,
+        showingScreen: 'agregarNPC'
+    }
+    case 'EDITAR_NPC_GEAR':
+    return {
+        ...state,
+        showingScreen: 'editarNPC',
+        npcList: action.payload
+    }
 
     case 'SELECT_EDITAR_ENTIDAD_GEAR':
     return {
@@ -256,6 +288,52 @@ const gearReducer = (state = initialState, action) => {
         return modif;
     }
     return state;
+    
+    // TEXTAREA
+    case 'SELECT_EDITAR_NPC_GEAR':
+    return {
+        ...state,
+        editingTextAreaTitle: action.payload.entity,
+        selectedIndex: action.payload.index,
+        textAreaImage: PERSONAJES + '/npc/' + action.payload.entity + '/npcImg.png',
+        textAreaFinalRendering: fs.readFileSync(PERSONAJES + '/npc/' + action.payload.entity + '/profile.html', 'utf8').split("<img")[0]
+    }
+    case 'CONFIRMED_EDITAR_NPC_GEAR':
+    return {
+        ...state,
+        textAreaValue: state.textAreaFinalRendering.replace('<textarea class="writableTextArea flex1" disabled>', '').replace("</textarea>", ''),
+        showingScreen: 'agregarNPC',
+        tituloTextArea: state.editingTextAreaTitle
+    }
+    case 'MODIFICAR_TEXTAREA_A_GUARDAR_GEAR':
+    return {
+        ...state,
+        textAreaValue: action.payload,
+        textAreaFinalRendering: createHTMLTextArea(action.payload),
+        actualFormIsComplete: (state.tituloTextArea !== '')
+    }
+    case 'MODIFICAR_TITULO_TEXTAREA_GEAR':
+    return {
+        ...state,
+        tituloTextArea: action.payload,
+        actualFormIsComplete: (action.payload && action.payload !== '')
+    }
+    case 'GRABAR_NPC_DB_GEAR':
+    var dirName = capitalizeEveryWord(state.tituloTextArea.replace(/[^A-Z]/gi, ''));
+    var saveSuccess = ((state.editingTextAreaTitle !== '' && state.editingTextAreaTitle !== state.dirName)
+            ? renameFile(PERSONAJES + '/npc/' + state.editingTextAreaTitle, PERSONAJES + '/npc/' + dirName)
+            : mkdir(PERSONAJES + '/npc/' + dirName))
+        && saveFile(createHTMLTextArea(state.textAreaValue, state.textAreaImage), (PERSONAJES + '/npc/' + dirName + '/profile.html'))
+        && (!state.textAreaImage.endsWith('.png'))
+            ? saveFile(atob(state.textAreaImage.replace('data:image/png;base64,', '')), PERSONAJES + '/npc/' + dirName + "/npcImg.png", 'binary')
+            : true;
+    if (saveSuccess) {
+        let modif = Object.assign({}, initialState);
+        modif.modalAbierto = true;
+        return modif;
+    }
+    return state;
+
 
     default: return state;
   }

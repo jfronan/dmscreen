@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   return {
     showingScreen: state.gear.showingScreen,
     actualFormIsComplete: state.gear.actualFormIsComplete,
-    editSelected: state.gear.editSelected
+    editSelected: state.gear.editSelected,
+    editingTextAreaTitle: state.gear.editingTextAreaTitle
   };
 };
 
@@ -37,7 +38,12 @@ const mapDispatchToProps = dispatch => {
             dispatch(combatActions.cargarPersonajes());
         })
     },
-    editarPersonaje: () => dispatch(gearActions.editarPersonaje())
+    editarPersonaje: () => dispatch(gearActions.editarPersonaje()),
+
+    guardarNPC: () => {
+        dispatch(gearActions.guardarNPC())
+    },
+    editarNPC: () => dispatch(gearActions.editarNPC()),
   };
 };
 

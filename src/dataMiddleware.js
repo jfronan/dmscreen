@@ -28,7 +28,7 @@ export const createSubTree = function(subruta, subname) {
         var file = ruta + '/' + items[i];
         if (items[i] === 'extData.json') {
             var extdatafileroute = ruta + '/' + items[i];
-            arbol.extData = window.require(extdatafileroute);
+            arbol.extData = requireUncached(extdatafileroute);
         }
         if (isImageString(items[i])) {
             arbol.imageRoute = actualRoute + '/' + items[i];
@@ -102,6 +102,22 @@ export const createSpellList = () => {
     return listaHechizos;
 }
 
+// NPCs
+export const createNPCList = () => {
+    var rutaNPCs = PERSONAJES + '/npc';
+    var listaNPCs = [];
+    var npcs = fs.readdirSync(rutaNPCs)
+    for (let k=0; k < npcs.length; k++) {
+        let file = rutaNPCs + '/' + npcs[k];
+        if (fs.lstatSync(file).isDirectory()) {
+            listaNPCs = listaNPCs.concat(npcs[k]);
+        };
+    }
+
+    // console.log('listaNPCs:', JSON.stringify(listaNPCs));
+    return listaNPCs;
+}
+
 
 
 // Data Management
@@ -129,6 +145,15 @@ export const retrieveNotes = () => {
     }
 }
 
+// Make dir
+export const mkdir = (route) => {
+    var created = fs.existsSync(route);
+    if (created && fs.lstatSync(route).isDirectory()) {
+        return true;
+    }
+    created = fs.mkdirSync(route);
+    return typeof created === 'undefined';
+}
 
 // Data Write
 export const saveFile = (file, route, fileType) => {

@@ -28,7 +28,8 @@ export const uploadImage = (file, category) => {
                 type: 'CARGAR_IMAGE_UPLOAD_GEAR',
                 payload: {
                     file: ('data:image/png;base64,' + btoa(reader.result)),
-                    category: category
+                    category: category,
+                    originalFileName: file.name
                 }
             })
         }
@@ -90,8 +91,10 @@ export const goToAddNpc = () => {
     };
 }
 export const goToEditNpc = () => {
+    let listaNPCs = dataMiddleware.createNPCList();
     return {
-        type: 'EDITAR_NPC_GEAR'
+        type: 'EDITAR_NPC_GEAR',
+        payload: listaNPCs
     };
 }
 export const goToAddLocation = () => {
@@ -105,7 +108,16 @@ export const goToEditLocation = () => {
     };
 }
 
-export const selectEntity = (entity, realIndex) => {
+export const selectEntity = (entity, realIndex, category) => {
+    if (category && category === "npc") {
+        return {
+            type: 'SELECT_EDITAR_NPC_GEAR',
+            payload: {
+              entity: entity,
+              index: realIndex
+            }
+        };
+    }
     return {
       type: 'SELECT_EDITAR_ENTIDAD_GEAR',
       payload: {
@@ -189,3 +201,32 @@ export const guardarPersonaje = () => {
     }
 }
 
+// TEXTAREA
+export const textAreaValue = (value) => {
+    return {
+        type: 'MODIFICAR_TEXTAREA_A_GUARDAR_GEAR',
+        payload: value
+    };
+}
+export const textAreaTitleValue = (value) => {
+    return {
+        type: 'MODIFICAR_TITULO_TEXTAREA_GEAR',
+        payload: value
+    };
+}
+
+export const guardarNPC = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'GRABAR_NPC_DB_GEAR'
+        })
+    }
+}
+
+export const editarNPC = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'CONFIRMED_EDITAR_NPC_GEAR'
+        })
+    }
+}
