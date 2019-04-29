@@ -98,13 +98,29 @@ export const goToEditNpc = () => {
     };
 }
 export const goToAddLocation = () => {
+    let arbol = dataMiddleware.createSubTree();
+    let listaNPCs = dataMiddleware.createNPCList();
+    let bestiario = dataMiddleware.createBestiaryList();
     return {
-        type: 'AGREGAR_LOCATION_GEAR'
+        type: 'AGREGAR_LOCATION_GEAR',
+        payload: {
+            arbol: arbol,
+            listaNPCs: listaNPCs,
+            bestiario: bestiario
+        }
     };
 }
 export const goToEditLocation = () => {
+    let arbol = dataMiddleware.createSubTree();
+    let listaNPCs = dataMiddleware.createNPCList();
+    let bestiario = dataMiddleware.createBestiaryList();
     return {
-        type: 'EDITAR_LOCATION_GEAR'
+        type: 'EDITAR_LOCATION_GEAR',
+        payload: {
+            arbol: arbol,
+            listaNPCs: listaNPCs,
+            bestiario: bestiario
+        }
     };
 }
 
@@ -230,3 +246,44 @@ export const editarNPC = () => {
         })
     }
 }
+
+// Location
+  export const goBackToParent = () => {
+    return (dispatch) => {
+        dispatch ({
+            type: 'VOLVER_LOCACION_PADRE_GEAR'
+        })
+    };
+  };
+  
+  export const goToSubLoc = (index) => {
+    return (dispatch) => {
+        dispatch ({
+            type: 'IR_A_SUBLOC_GEAR',
+            payload: index
+        })
+    };
+  };
+  export const changeExtData = (stat, value) => {
+    return {
+        type: 'MODIFICAR_EXTDATA_A_GUARDAR_GEAR',
+        payload: {
+            stat: stat,
+            value: value
+        }
+    };
+  }
+  export const guardarLocation = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'GRABAR_LOCATION_DB_GEAR'
+        })
+    }
+  }
+  export const editarLocation = () => {
+    return async (dispatch) => {
+        dispatch ({
+            type: 'CONFIRMED_EDITAR_LOCATION_GEAR'
+        })
+    }    
+  }

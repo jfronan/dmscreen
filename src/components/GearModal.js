@@ -27,12 +27,29 @@ export default class GearModal extends React.Component {
               {this.props.showingScreen === ''
                 ? <div className="fill flexRow spaced">
                   <div className="flex1 flex spaceAround">
+                    {/* 
                     <div className="gearButtons gear flex violet hoverPoint clickFeedback">
                       <div>Manual de Uso</div>
                     </div>
                     <div className="gearButtons gear flex violet hoverPoint clickFeedback">
+                      <div>Enciclopedia</div>
+                    </div>
+                    <div className="gearButtons gear flex violet hoverPoint clickFeedback">
                       <div>Borrar Logs</div>
                     </div>
+                    */}
+                    
+                    <div className="gearButtons gear flex greyish hoverPoint clickFeedback">
+                      <div>Manual de Uso (WIP)</div>
+                    </div>
+                    <div className="gearButtons gear flex greyish hoverPoint clickFeedback">
+                      <div>Enciclopedia (WIP)</div>
+                    </div>
+                    <div className="gearButtons gear flex greyish hoverPoint clickFeedback">
+                      <div>Borrar Logs (WIP)</div>
+                    </div>
+
+
                   </div>
                   <div className="flex1 flex spaceAround">
                     <div className="gearButtons gear flex violet">

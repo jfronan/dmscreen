@@ -7,6 +7,8 @@ import CharacterAdder from './characterEditor/AdderContainer';
 import CharacterEditor from './characterEditor/EditorContainer';
 import NPCAdder from './npcEditor/AdderContainer';
 import NPCEditor from './npcEditor/EditorContainer';
+import LocacionAdder from './locationEditor/AdderContainer';
+import LocacionEditor from './locationEditor/EditorContainer';
 
 export default class GearModal extends React.Component {
 
@@ -42,6 +44,12 @@ export default class GearModal extends React.Component {
         case "editarNPC":
         this.props.editarNPC()
         break;
+        case "agregarLocacion":
+        this.props.guardarLocacion()
+        break;
+        case "editarLocacion":
+        this.props.editarLocacion()
+        break;
 
         default: break;
       }
@@ -69,7 +77,10 @@ export default class GearModal extends React.Component {
     }
     if (show.startsWith("editar")) {
         if ((Object.keys(this.props.editSelected).length > 0 && this.props.editSelected.constructor === Object)
-            || (this.props.editingTextAreaTitle && this.props.editingTextAreaTitle !== '')) {
+            || (this.props.editingTextAreaTitle && this.props.editingTextAreaTitle !== '')
+            || (Object.keys(this.props.actualTreePath).length > 0
+                && this.props.actualTreePath.constructor === Object
+                && this.props.actualTreePath.name !== 'locations')) {
             return (
                 <div className="flex1 flex centerContent">
                     <div className="gearConfirmEnabledButton hoverPoint clickFeedback" onClick={()=> this.confirmFunction(show)}>
@@ -109,6 +120,10 @@ export default class GearModal extends React.Component {
                     return <NPCAdder/>;
                     case "editarNPC":
                     return <NPCEditor/>;
+                    case "agregarLocacion":
+                    return <LocacionAdder/>;
+                    case "editarLocacion":
+                    return <LocacionEditor/>;
 
                     default: return null;
                 }

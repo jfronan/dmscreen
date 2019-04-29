@@ -2,13 +2,15 @@ import EditorGear from './EditorGear';
 import { connect } from 'react-redux';
 import * as gearActions from '../../actions/GearAction';
 import * as combatActions from '../../actions/CombatScreenAction';
+import * as mapActions from '../../actions/MapScreenAction';
 
 const mapStateToProps = state => {
   return {
     showingScreen: state.gear.showingScreen,
     actualFormIsComplete: state.gear.actualFormIsComplete,
     editSelected: state.gear.editSelected,
-    editingTextAreaTitle: state.gear.editingTextAreaTitle
+    editingTextAreaTitle: state.gear.editingTextAreaTitle,
+    actualTreePath: state.gear.actualTreePath
   };
 };
 
@@ -44,6 +46,14 @@ const mapDispatchToProps = dispatch => {
         dispatch(gearActions.guardarNPC())
     },
     editarNPC: () => dispatch(gearActions.editarNPC()),
+
+    guardarLocacion: () => {
+        dispatch(gearActions.guardarLocation())
+        .then(()=> {
+            dispatch(mapActions.cargarArbol());
+        })
+    },
+    editarLocacion: () => dispatch(gearActions.editarLocation())
   };
 };
 

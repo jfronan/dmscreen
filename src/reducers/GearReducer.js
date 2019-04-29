@@ -1,7 +1,12 @@
-import {HECHIZOS, PERSONAJES} from '../Constants';
+import {HECHIZOS, PERSONAJES, DATADIR} from '../Constants';
 import {spacedStringCamelCase, capitalizeEveryWord} from '../utils/Utils';
 import {saveFile, renameFile, unlinkFile, mkdir, unlinkDir} from '../dataMiddleware';
 var fs = window.require('fs');
+
+function requireUncached(module){
+    delete require.cache[require.resolve(module)]
+    return require(module)
+}
 
 var validateFileName = (stringBase) => {
     return spacedStringCamelCase(stringBase).replace(/[^A-Z]/gi, '');
@@ -68,6 +73,13 @@ const initialState = {
         darkvision: 0,
         abilities: ''
     },
+    arbol: {},
+    actualTreePath: {},
+    actualPath: '',
+    extDataToSave: {
+        npcs: [],
+        monsters: []
+    },
     tituloTextArea: '',
     editingTextAreaTitle: '',
     textAreaValue: '',
@@ -111,6 +123,12 @@ const gearReducer = (state = initialState, action) => {
             ...state,
             textAreaImage: action.payload.file,
             actualFormIsComplete: (action.payload.file !== '' && state.tituloTextArea !== '')
+        }
+        case "location":
+        return {
+            ...state,
+            imagenAGuardar: action.payload.file,
+            actualFormIsComplete: (state.tituloTextArea !== '')
         }
 
         default: 
@@ -170,6 +188,27 @@ const gearReducer = (state = initialState, action) => {
         ...state,
         showingScreen: 'editarNPC',
         npcList: action.payload
+    }
+
+    case 'AGREGAR_LOCATION_GEAR':
+    return {
+        ...state,
+        showingScreen: 'agregarLocacion',
+        arbol: action.payload.arbol,
+        npcList: action.payload.listaNPCs,
+        bestiario: action.payload.bestiario,
+        actualTreePath: action.payload.arbol,
+        actualPath: DATADIR + '/' + action.payload.arbol.name
+    }
+    case 'EDITAR_LOCATION_GEAR':
+    return {
+        ...state,
+        showingScreen: 'editarLocacion',
+        arbol: action.payload.arbol,
+        npcList: action.payload.listaNPCs,
+        bestiario: action.payload.bestiario,
+        actualTreePath: action.payload.arbol,
+        actualPath: DATADIR + '/' + action.payload.arbol.name
     }
 
     case 'SELECT_EDITAR_ENTIDAD_GEAR':
@@ -326,6 +365,85 @@ const gearReducer = (state = initialState, action) => {
         && saveFile(createHTMLTextArea(state.textAreaValue, state.textAreaImage), (PERSONAJES + '/npc/' + dirName + '/profile.html'))
         && (!state.textAreaImage.endsWith('.png'))
             ? saveFile(atob(state.textAreaImage.replace('data:image/png;base64,', '')), PERSONAJES + '/npc/' + dirName + "/npcImg.png", 'binary')
+            : true;
+    if (saveSuccess) {
+        let modif = Object.assign({}, initialState);
+        modif.modalAbierto = true;
+        return modif;
+    }
+    return state;
+
+    // Location
+    case 'CONFIRMED_EDITAR_LOCATION_GEAR':
+    let infoHTML = fs.readFileSync(state.actualPath + '/info.html', 'utf8');
+    let title = state.actualTreePath.name;
+    return {
+        ...state,
+        textAreaFinalRendering: infoHTML,
+        textAreaValue: infoHTML.replace('<textarea class="writableTextArea flex1" disabled>', '').replace("</textarea>", ''),
+        showingScreen: 'agregarLocacion',
+        tituloTextArea: title,
+        editingTextAreaTitle: title,
+        imagenAGuardar: state.actualPath + '/locationImg.png',
+        extDataToSave: requireUncached(state.actualPath + '/extData.json')
+    }
+    case 'VOLVER_LOCACION_PADRE_GEAR':
+      if (state.actualTreePath.parentRoute === null || state.actualTreePath.parentRoute === '') {
+        return state;
+      }
+      var lastLocationPos = state.actualPath.lastIndexOf('/' + state.actualTreePath.name);
+      const parentPath = state.actualPath.substring(0, lastLocationPos)
+      var parentRef = ()=> {
+        var pathFragments = parentPath.split('/');
+        if (pathFragments.length < 4) {
+          return state.arbol;
+        }
+        var pointerConstruct = state.arbol;
+        /* eslint no-loop-func: 0 */
+        for (var i=3; i < pathFragments.length; i++) {
+          pointerConstruct = pointerConstruct.subLocs.find(loc => {
+            return loc.name === pathFragments[i];
+          });
+        };
+        /* eslint no-loop-func: 0 */
+        return pointerConstruct;
+      }
+      return {
+        ...state,
+        actualTreePath: parentRef(),
+        actualPath: parentPath
+      };
+    case 'IR_A_SUBLOC_GEAR':
+        let subLoc = state.actualTreePath.subLocs[action.payload];
+        return {
+            ...state,
+            actualTreePath: subLoc,
+            actualPath: state.actualPath + '/' + subLoc.name
+        };
+    case 'MODIFICAR_EXTDATA_A_GUARDAR_GEAR':
+    return {
+        ...state,
+        extDataToSave: {
+            ...state.extDataToSave,
+            [action.payload.stat]: action.payload.value
+        },
+        actualFormIsComplete: (state.tituloTextArea !== '')
+    }
+
+    case 'GRABAR_LOCATION_DB_GEAR':
+    var isEdited = state.editingTextAreaTitle !== '';
+    var actualPath = state.actualPath.slice(0);
+    if (isEdited) {
+        actualPath = actualPath.substring(0, actualPath.lastIndexOf('/'));
+    }
+    var dirName = capitalizeEveryWord(state.tituloTextArea.replace(/[^A-Z]/gi, ''));
+    var saveSuccess = ((isEdited && state.editingTextAreaTitle !== state.dirName)
+            ? renameFile(actualPath + '/' + state.editingTextAreaTitle, actualPath + '/' + dirName)
+            : mkdir(actualPath + '/' + dirName))
+        && saveFile(JSON.stringify(state.extDataToSave), (actualPath + '/' + dirName + '/extData.json'))
+        && saveFile(createHTMLTextArea(state.textAreaValue), (actualPath + '/' + dirName + '/info.html'))
+        && (!state.imagenAGuardar.endsWith('.png'))
+            ? saveFile(atob(state.imagenAGuardar.replace('data:image/png;base64,', '')), actualPath + '/' + dirName + "/locationImg.png", 'binary')
             : true;
     if (saveSuccess) {
         let modif = Object.assign({}, initialState);
