@@ -20,7 +20,7 @@ class ShareableWindow extends React.Component {
         )
         case 'imgBestiary':
         return (
-          <img src={PERSONAJES + '/statSheets/' + this.props.renderData.data}
+          <img src={PERSONAJES + '/statSheets/' + this.props.renderData.data + "?random=" + Math.random()}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"
@@ -28,7 +28,7 @@ class ShareableWindow extends React.Component {
         )
         case 'imgHechizo':
         return (
-          <img src={HECHIZOS + '/' + this.props.renderData.data}
+          <img src={HECHIZOS + '/' + this.props.renderData.data + "?random=" + Math.random()}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"

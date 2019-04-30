@@ -54,11 +54,11 @@ export default class MainScreen extends React.Component {
         </div>
 
         <div id='mapa' className={this.props.modoCombate ? 'hidden' : 'App colorMapa'}>
-          <img src={this.props.mapaImg} alt="" className="App blur"/>
+          <img src={!this.props.mapaImg.startsWith('data:') ? this.props.mapaImg + "?random=" + Math.random() : this.props.mapaImg} alt="" className="App blur"/>
           <MapScreen/>
         </div>
         <div id='combate' className={this.props.modoCombate ? 'App sangron' : 'hidden'}>
-          <img src={this.props.mapaImg} alt="" className="App blur"/>
+          <img src={!this.props.mapaImg.startsWith('data:') ? this.props.mapaImg + "?random=" + Math.random() : this.props.mapaImg} alt="" className="App blur"/>
           <CombatScreen/>
         </div>
 

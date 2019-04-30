@@ -23,7 +23,7 @@ export default class Notas extends React.Component {
       )
       case 'imgBestiary':
       return (
-        <img src={PERSONAJES + '/statSheets/' + renderData.data}
+        <img src={PERSONAJES + '/statSheets/' + renderData.data + "?random=" + Math.random()}
         alt='No se encuentra imagen'
         className="mapImage"
         align="middle"
@@ -31,7 +31,7 @@ export default class Notas extends React.Component {
       )
       case 'imgHechizo':
         return (
-          <img src={HECHIZOS + '/' + renderData.data}
+          <img src={HECHIZOS + '/' + renderData.data + "?random=" + Math.random()}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"

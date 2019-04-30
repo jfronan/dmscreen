@@ -11,7 +11,8 @@ export default class MapScreen extends React.Component {
   }
 
   imagenAMostrar() {
-    return this.props.mapa;
+    let mapa =  !this.props.mapa.startsWith('data:') ? this.props.mapa + "?random=" + Math.random() : this.props.mapa;
+    return mapa;
   }
 
   contentMapa() {

@@ -63,7 +63,7 @@ export default class Adder extends React.Component {
                     </div>
                     {this.props.imagenASubir !== ''
                     ? <div className="flex flex1 relative">
-                        <img className="mapImage" src={this.props.imagenASubir}/>
+                        <img className="mapImage" src={!this.props.imagenASubir.startsWith('data:') ? this.props.imagenASubir + "?random=" + Math.random() : this.props.imagenASubir}/>
                     </div>
                     : null}
                     Esta Imagen estara al final del contenido que se mostrara sobre el npc
