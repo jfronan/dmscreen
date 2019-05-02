@@ -1,6 +1,1 @@
-{
-    "nombre": "Produce Flame",
-    "sheet": "produce flame.png",
-    "level": 0,
-    "school": "conjuration"
-}
+{"nombre":"Produce Flame","sheet":"ProduceFlame.png","level":0,"school":"Conjuration"}
