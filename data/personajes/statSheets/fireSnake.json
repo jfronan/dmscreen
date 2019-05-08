@@ -1,8 +1,0 @@
-{
-    "nombre": "Fire Snake",
-    "raza": "elemental",
-    "sheet": "fire snake.png",
-    "rating": 1,
-    "maxHP": 22,
-    "armor": 14
-}
