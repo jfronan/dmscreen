@@ -56,7 +56,7 @@ export default class TurnoRow extends React.Component {
                         }}
                         onClick={(e)=>{e.stopPropagation()}}
                         className="seamlessInput"
-                        style={{maxWidth: "35px"}}
+                        style={{maxWidth: "25px"}}
                         onChange={(e)=> e.target.value = this.handleNumericInput(e.target.value)}
                         maxLength="4"
                     />
