@@ -11,11 +11,19 @@ import Notas from './notas/NotasContainer';
 
 import {storeLogs, storeNotes} from '../dataMiddleware';
 
+const remote = require('electron').remote
+
 export default class MainScreen extends React.Component {
 
   constructor(props) {
     super();
     this.onAlternarPress = this.onAlternarPress.bind(this);
+    this.closeApp = this.closeApp.bind(this);
+  }
+
+  closeApp() {
+    let w = remote.getCurrentWindow()
+    w.close()
   }
 
   componentDidMount() {
@@ -39,6 +47,7 @@ export default class MainScreen extends React.Component {
   render() {
     return (
       <div className="App">
+        <div className="closeAppButton hoverPoint clickFeedback" onClick={()=> this.closeApp()}>X</div>
         <ModalZoom/>
         <GearModal/>
         <div className="opcionesBox">

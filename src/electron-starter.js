@@ -14,8 +14,7 @@ let splash
 function createWindow () { 
   // Create the browser window. 
   mainWindow = new BrowserWindow({ 
-    width: 1600, 
-    height: 900, 
+    fullscreen: true, 
     webPreferences: { 
       nodeIntegration: true 
     },
