@@ -4,6 +4,14 @@ import * as mainActions from '../actions/MainScreenAction';
 import { renderIframe } from '../utils/Utils';
 import {PERSONAJES, HECHIZOS} from '../Constants';
 import PcCard from './combat/personajes/PcCard';
+var fs = window.require('fs');
+
+function binaryRead(url){
+  if (url !== '') {
+    var urlContent = fs.readFileSync(url);
+    return 'data:image/png;base64,' + urlContent.toString('base64');
+  }
+}
 
 class ShareableWindow extends React.Component {
 
@@ -20,7 +28,7 @@ class ShareableWindow extends React.Component {
         )
         case 'imgBestiary':
         return (
-          <img src={PERSONAJES + '/statSheets/' + this.props.renderData.data + "?random=" + Math.random()}
+          <img src={binaryRead(PERSONAJES + '/statSheets/' + this.props.renderData.data)}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"
@@ -28,7 +36,7 @@ class ShareableWindow extends React.Component {
         )
         case 'imgHechizo':
         return (
-          <img src={HECHIZOS + '/' + this.props.renderData.data + "?random=" + Math.random()}
+          <img src={binaryRead(HECHIZOS + '/' + this.props.renderData.data)}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"

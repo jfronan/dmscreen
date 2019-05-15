@@ -39,7 +39,7 @@
           "transform-object-rest-spread",
           "transform-es2015-classes"
         ],
-        "sourceMaps": "none"
+        "sourceMaps": "inline"
       }
     }
   }

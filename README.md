@@ -3,10 +3,10 @@ Ir al apartado de Tags/Etiquetas y descargar la ultima version.
 
 # Desarrollo
 Se debe instalar:
-* electron-forge 5.2.4
-* electron 4.1.3
-
-Para tener las instrucciones de ejecucion.
+* npm install -g electron-forge@5.2.4
+* npm install -g electron@4.1.3
+* Descargar e instalar WiX Toolset 3.11 ... de https://wixtoolset.org/releases/
+* Agregar a la variable de entorno PATH (la que esta usando nodeJS en windows), la ruta a la carpeta /bin de wix  (ej.: C:\Program Files (x86)\WiX Toolset v3.11\bin)
 
 #### Para probar la app
 ````
@@ -17,4 +17,4 @@ npm start
 npm run make
 ````
 
-El instalador se generara en la carpeta out/make/squirrel.windows/x64
+El instalador se generara en la carpeta out/make/wix/x64

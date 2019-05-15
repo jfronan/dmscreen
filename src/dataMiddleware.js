@@ -4,8 +4,10 @@ var path = window.require('path');
 var fs = window.require('fs');
 
 function requireUncached(module){
-    delete require.cache[require.resolve(module)]
-    return require(module)
+    if (module !== '') {
+        delete require.cache[require.resolve(module)];
+        return require(module);
+    }
 }
 
 // Locations
@@ -74,8 +76,10 @@ export const createPCsList = () => {
     var pcsList = [];
     var pcs = fs.readdirSync(rutaPCs)
     for (let i=0; i < pcs.length; i++) {
-        let file = rutaPCs + '/' + pcs[i];
-        pcsList = pcsList.concat(requireUncached(file));
+        if (pcs[i] !== "Readme.txt") {
+            let file = rutaPCs + '/' + pcs[i];
+            pcsList = pcsList.concat(requireUncached(file));
+        }
     }
 
     return pcsList;

@@ -3,6 +3,14 @@ import { capitalizeWord } from '../../utils/Utils';
 import { renderIframe } from '../../utils/Utils';
 import {PERSONAJES, HECHIZOS} from '../../Constants';
 import PcCard from '../combat/personajes/PcCard';
+var fs = window.require('fs');
+
+function binaryRead(url){
+  if (url !== '') {
+    var urlContent = fs.readFileSync(url);
+    return 'data:image/png;base64,' + urlContent.toString('base64');
+  }
+}
 
 export default class Notas extends React.Component {
 
@@ -23,7 +31,7 @@ export default class Notas extends React.Component {
       )
       case 'imgBestiary':
       return (
-        <img src={PERSONAJES + '/statSheets/' + renderData.data + "?random=" + Math.random()}
+        <img src={binaryRead(PERSONAJES + '/statSheets/' + renderData.data)}
         alt='No se encuentra imagen'
         className="mapImage"
         align="middle"
@@ -31,7 +39,7 @@ export default class Notas extends React.Component {
       )
       case 'imgHechizo':
         return (
-          <img src={HECHIZOS + '/' + renderData.data + "?random=" + Math.random()}
+          <img src={binaryRead(HECHIZOS + '/' + renderData.data)}
           alt='No se encuentra imagen'
           className="mapImage"
           align="middle"

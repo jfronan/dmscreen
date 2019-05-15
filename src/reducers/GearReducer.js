@@ -4,8 +4,10 @@ import {saveFile, renameFile, unlinkFile, mkdir, unlinkDir} from '../dataMiddlew
 var fs = window.require('fs');
 
 function requireUncached(module){
-    delete require.cache[require.resolve(module)]
-    return require(module)
+    if (module !== '') {
+        delete require.cache[require.resolve(module)];
+        return require(module);
+    }
 }
 
 var validateFileName = (stringBase) => {

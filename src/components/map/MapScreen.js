@@ -2,6 +2,14 @@ import React from 'react';
 import Window from '../Window';
 import Navegador from './navegador/NavegadorContainer';
 import NPCs from './npcs/NpcsContainer';
+var fs = window.require('fs');
+
+function binaryRead(url){
+  if (url !== '') {
+    var urlContent = fs.readFileSync(url);
+    return 'data:image/png;base64,' + urlContent.toString('base64');
+  }
+}
 
 export default class MapScreen extends React.Component {
 
@@ -11,7 +19,7 @@ export default class MapScreen extends React.Component {
   }
 
   imagenAMostrar() {
-    let mapa =  !this.props.mapa.startsWith('data:') ? this.props.mapa + "?random=" + Math.random() : this.props.mapa;
+    let mapa =  !this.props.mapa.startsWith('data:') ? binaryRead(this.props.mapa) : this.props.mapa;
     return mapa;
   }
 

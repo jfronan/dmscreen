@@ -1,6 +1,14 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import {capitalizeEveryWord} from '../../../utils/Utils';
+var fs = window.require('fs');
+
+function binaryRead(url){
+  if (url !== '') {
+    var urlContent = fs.readFileSync(url);
+    return 'data:image/png;base64,' + urlContent.toString('base64');
+  }
+}
 
 export default class Adder extends React.Component {
 
@@ -63,7 +71,7 @@ export default class Adder extends React.Component {
                     </div>
                     {this.props.imagenASubir !== ''
                     ? <div className="flex flex1 relative">
-                        <img className="mapImage" src={!this.props.imagenASubir.startsWith('data:') ? this.props.imagenASubir + "?random=" + Math.random() : this.props.imagenASubir}/>
+                        <img className="mapImage" src={!this.props.imagenASubir.startsWith('data:') ? binaryRead(this.props.imagenASubir) : this.props.imagenASubir}/>
                     </div>
                     : null}
                     Esta Imagen estara al final del contenido que se mostrara sobre el npc

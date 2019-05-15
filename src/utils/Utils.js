@@ -62,11 +62,18 @@ export const addPlusIfPositive = (number)=> {
 }
 
 export const renderIframe = (url, classes)=> {
+  var urlContent = url;
+  try {
+    urlContent = fs.readFileSync(url, 'utf8');
+  } catch (e) {
+      console.log(e);
+  }
   var frameLoad = (frameRef)=> {
     var frame = frameRef.target;
     var body = frame.contentWindow.document.body;
     var images = frame.contentWindow.document.images;
     var textAreas = frame.contentWindow.document.getElementsByTagName('textarea');
+    body.innerHTML = urlContent;
     body.style.fontSize = '14px';
     for (var i = 0; i < images.length; i++) {
     images[i].style.maxWidth = '100%';
@@ -87,7 +94,7 @@ export const renderIframe = (url, classes)=> {
   try {
     fs.lstatSync(url)
     return(
-        <iframe id="myFrame" className={classes} src={url} onLoad={(frameRef)=> frameLoad(frameRef)} seamless/>
+        <iframe id="myFrame" className={classes} src={urlContent} onLoad={(frameRef)=> frameLoad(frameRef)} seamless/>
     )
   } catch (e) {return (<div></div>)}
 }
