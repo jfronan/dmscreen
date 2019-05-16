@@ -47,7 +47,7 @@
       "electronWixMSIConfig": {
         "appDirectory": "out/dmscreen-win32-x64",
         "outputDirectory": "out/make",
-        "exe": "DM-Screen Installer",
+        "exe": "dmscreen",
         "description": "Simulador virtual de pantalla para DMs",
         "name": "DM Screen",
         "manufacturer": "Juan Francisco Ronanduano",
