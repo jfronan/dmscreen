@@ -39,7 +39,10 @@
       },
       "electronPackagerConfig": {
         "packageManager": "npm",
-        "icon": "src/favicon.ico"
+        "icon": "src/favicon.ico",
+        "win32metadata": {
+          "requested-execution-level": "requireAdministrator"
+        }
       },
       "electronWixMSIConfig": {
         "appDirectory": "out/dmscreen-win32-x64",
@@ -47,7 +50,6 @@
         "exe": "DM-Screen Installer",
         "description": "Simulador virtual de pantalla para DMs",
         "name": "DM Screen",
-        "shortcutName": "DM Screen",
         "manufacturer": "Juan Francisco Ronanduano",
         "programFilesFolderName": "DMscreen",
         "ui": {

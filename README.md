@@ -1,6 +1,10 @@
 # Descargas
 Ir al apartado de Tags/Etiquetas y descargar la ultima version.
 
+##ToubleShoot
+¿Que hago si no me deja guardar las informacion que cargo?
+Probablemente hayas instalado la aplicacion en un directorio que requiere permisos adicionales. Deberias probar correr el programa como administrador.
+
 # Desarrollo
 Se debe instalar:
 * npm install -g electron-forge@5.2.4
