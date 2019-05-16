@@ -1,6 +1,13 @@
 import React from 'react';
 var fs = window.require('fs');
 
+function binaryRead(url){
+    if (url !== '') {
+      var urlContent = fs.readFileSync(url);
+      return 'data:image/png;base64,' + urlContent.toString('base64');
+    }
+  }
+
 export const capitalizeWord = (stringBase)=> {
     try {
         return stringBase.charAt(0).toUpperCase() + stringBase.slice(1);
@@ -63,7 +70,10 @@ export const addPlusIfPositive = (number)=> {
 
 export const renderIframe = (url, classes)=> {
   var urlContent = url;
+  var directory = '';
   try {
+    let lastIndexOfBarra = url.lastIndexOf('/');
+    directory = url.slice(0, lastIndexOfBarra);
     urlContent = fs.readFileSync(url, 'utf8');
   } catch (e) {
       console.log(e);
@@ -75,12 +85,6 @@ export const renderIframe = (url, classes)=> {
     var textAreas = frame.contentWindow.document.getElementsByTagName('textarea');
     body.innerHTML = urlContent;
     body.style.fontSize = '14px';
-    for (var i = 0; i < images.length; i++) {
-    images[i].style.maxWidth = '100%';
-    images[i].style.maxHeight = '100%';
-    images[i].style.objectFit = 'contain';
-    images[i].style.alignSelf = 'center';
-    }
     for (var i = 0; i < textAreas.length; i++) {
         textAreas[i].style.height = textAreas[i].scrollHeight+"px";
         textAreas[i].style.width = '100%';
@@ -89,6 +93,15 @@ export const renderIframe = (url, classes)=> {
         textAreas[i].style.resize = 'none';
         textAreas[i].style.backgroundColor = 'transparent';
         textAreas[i].disabled = true;
+    }
+    for (var i = 0; i < images.length; i++) {
+        let lastIndexOfBarra = images[i].src.lastIndexOf('/');
+        let imageName = images[i].src.substring(lastIndexOfBarra);
+        images[i].src = binaryRead(directory + imageName);
+        images[i].style.maxWidth = '100%';
+        images[i].style.maxHeight = '100%';
+        images[i].style.objectFit = 'contain';
+        images[i].style.alignSelf = 'center';
     }
   };
   try {
