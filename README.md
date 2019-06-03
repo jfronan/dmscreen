@@ -1,5 +1,5 @@
 # Descargas
-Ir al apartado de Tags/Etiquetas y descargar la ultima version.
+GitHub no permite almacenar archivos grandes, por lo tanto no se puede descargar el instalador final. Sin embargo el proyecto se puede clonar libremente y se puede generar el instalador de alli o mismo correr la version de desarrollo.
 
 ##ToubleShoot
 ¿Que hago si no me deja guardar las informacion que cargo?
